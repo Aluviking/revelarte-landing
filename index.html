@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RevelArte — Diseño y Publicidad</title>
+  <meta name="description" content="RevelArte, diseño y publicidad: empresa integral de publicidad digital e impresa. Diseño gráfico, branding, contenido para redes, fotografía, impresión, avisos, vinilos, papelería, souvenirs y prendas personalizadas.">
+  <meta name="theme-color" content="#0a0a0a">
+  <link rel="icon" type="image/png" href="assets/brand/favicon.png">
+  <link rel="apple-touch-icon" href="assets/brand/apple-touch-icon.png">
+
+  <!-- Aplica el tema antes de pintar para evitar parpadeo -->
+  <script>
+    (function () {
+      var d = document.documentElement, t = null;
+      d.classList.add('js');
+      try { t = localStorage.getItem('ra-theme'); } catch (e) {}
+      if (!t) t = 'dark'; // la marca vive en negro; el visitante puede cambiar a claro
+      d.setAttribute('data-theme', t);
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- ====== Iconos (sprite SVG) ====== -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V20h14V9.5"/><path d="M10 20v-5h4v5"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></symbol>
+    <symbol id="i-grid" viewBox="0 0 24 24"><rect x="4" y="4" width="6.5" height="6.5" rx="1.6"/><rect x="13.5" y="4" width="6.5" height="6.5" rx="1.6"/><rect x="4" y="13.5" width="6.5" height="6.5" rx="1.6"/><rect x="13.5" y="13.5" width="6.5" height="6.5" rx="1.6"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12Z"/></symbol>
+    <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 16v-5a6 6 0 1 1 12 0v5l1.5 2h-15Z"/><path d="M10 20.5a2 2 0 0 0 4 0"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></symbol>
+    <symbol id="i-tag" viewBox="0 0 24 24"><path d="M3 12V4h8l10 10-8 8L3 12Z"/><circle cx="7.5" cy="8.5" r="1.5"/></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+    <symbol id="i-arrow-ur" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></symbol>
+    <symbol id="i-arrow-ul" viewBox="0 0 24 24"><path d="M17 17 7 7M16 7H7v9"/></symbol>
+    <symbol id="i-arrow-l" viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></symbol>
+    <symbol id="i-arrow-r" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20s-7.5-4.6-9.2-9.3C1.7 7.4 4 4 7.4 4c2 0 3.4 1.1 4.6 2.7C13.2 5.1 14.6 4 16.6 4 20 4 22.3 7.4 21.2 10.7 19.5 15.4 12 20 12 20Z"/></symbol>
+    <symbol id="i-bookmark" viewBox="0 0 24 24"><path d="M6 3h12v18l-6-4-6 4Z"/></symbol>
+    <symbol id="i-share" viewBox="0 0 24 24"><path d="m14 5 7 7-7 7M21 12H10a7 7 0 0 0-7 7"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h10"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+    <symbol id="i-sparkle" viewBox="0 0 24 24"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M6 18l2.5-2.5M15.5 8.5 18 6"/></symbol>
+    <symbol id="i-flag" viewBox="0 0 24 24"><path d="M5 21V4M5 4h11l-2 4 2 4H5"/></symbol>
+    <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></symbol>
+    <symbol id="i-pen-tool" viewBox="0 0 24 24"><path d="m12 19 7-7 3 3-7 7Z"/><path d="m18 13-1.5-7.5L2 2l3.5 14.5L13 18Z"/><path d="m2 2 7.6 7.6"/><circle cx="11" cy="11" r="2"/></symbol>
+    <symbol id="i-award" viewBox="0 0 24 24"><circle cx="12" cy="9" r="6"/><path d="M8.5 14 7 22l5-3 5 3-1.5-8"/></symbol>
+    <symbol id="i-video" viewBox="0 0 24 24"><rect x="2" y="6" width="14" height="12" rx="2"/><path d="m16 10 6-3v10l-6-3"/></symbol>
+    <symbol id="i-camera" viewBox="0 0 24 24"><path d="M4 8h3l2-3h6l2 3h3a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1Z"/><circle cx="12" cy="13.5" r="3.5"/></symbol>
+    <symbol id="i-printer" viewBox="0 0 24 24"><path d="M6 9V3h12v6"/><rect x="3" y="9" width="18" height="8" rx="2"/><path d="M6 14h12v7H6Z"/></symbol>
+    <symbol id="i-sign" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="11" rx="2"/><path d="M12 15v6M8 21h8M7 9.5h10"/></symbol>
+    <symbol id="i-layers" viewBox="0 0 24 24"><path d="m12 3 9 5-9 5-9-5Z"/><path d="m3 13 9 5 9-5"/></symbol>
+    <symbol id="i-notebook" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 3v18M3 7h4M3 12h4M3 17h4M13 8h3"/></symbol>
+    <symbol id="i-gift" viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M5 12v9h14v-9M12 8v13"/><path d="M12 8S10.5 3 7.5 4 9 8 12 8Zm0 0s1.5-5 4.5-4S15 8 12 8Z"/></symbol>
+    <symbol id="i-shirt" viewBox="0 0 24 24"><path d="M8 3 3 6l2 5 2-1v11h10V10l2 1 2-5-5-3a4 4 0 0 1-8 0Z"/></symbol>
+    <symbol id="i-bag" viewBox="0 0 24 24"><path d="M5 8h14l-1 13H6Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z"/></symbol>
+    <symbol id="i-instagram" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></symbol>
+    <symbol id="i-linkedin" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10v7M8 7v.01M12 17v-7M12 13a3 3 0 0 1 6 0v4"/></symbol>
+    <symbol id="i-facebook" viewBox="0 0 24 24"><path d="M14 8h3V4h-3a4 4 0 0 0-4 4v3H7v4h3v6h4v-6h3l1-4h-4V8Z"/></symbol>
+  </svg>
+
+  <!-- Barra de progreso de scroll -->
+  <div class="scroll-progress" aria-hidden="true"><span></span></div>
+
+  <!-- Fondo de metal cepillado (identidad) con parallax -->
+  <div class="page-bg" aria-hidden="true">
+    <img class="page-bg__dark" src="assets/textures/metal-negro.jpg" alt="" data-parallax="0.35">
+    <img class="page-bg__light" src="assets/textures/metal-plata.jpg" alt="" data-parallax="0.35">
+  </div>
+
+  <!-- ====== Header ====== -->
+  <header class="site-header" id="top">
+    <div class="site-header__inner">
+      <a href="#inicio" class="brand" aria-label="RevelArte, ir al inicio">
+        <img class="logo logo--neg" src="assets/brand/logo-negativo.png" alt="RevelArte Diseño y Publicidad" width="1200" height="646"><img class="logo logo--pos" src="assets/brand/logo-positivo.png" alt="RevelArte Diseño y Publicidad" width="1200" height="646">
+      </a>
+
+      <nav class="main-nav" id="main-nav" aria-label="Principal">
+        <a href="#nosotros">Nosotros</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#productos">Productos</a>
+        <a href="#galeria">Galería</a>
+        <a href="#proceso">Proceso</a>
+        <a href="#contacto" class="main-nav__cta-mobile">Contacto</a>
+      </nav>
+
+      <div class="site-header__actions">
+        <button class="icon-btn icon-btn--soft" type="button" data-theme-toggle aria-label="Cambiar tema">
+          <svg class="ico ico--sun"><use href="#i-sun"/></svg>
+          <svg class="ico ico--moon"><use href="#i-moon"/></svg>
+        </button>
+        <a href="#contacto" class="btn btn--primary btn--sm site-header__cta" data-magnetic>
+          <span>Cotiza ahora</span><svg class="ico"><use href="#i-arrow-ur"/></svg>
+        </a>
+        <button class="icon-btn icon-btn--soft nav-toggle" type="button" aria-controls="main-nav" aria-expanded="false" aria-label="Abrir menú">
+          <svg class="ico ico--open"><use href="#i-menu"/></svg>
+          <svg class="ico ico--close"><use href="#i-close"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ====== HERO ====== -->
+    <section class="hero" id="inicio">
+      <div class="hero-frame">
+        <div class="hero-stage">
+
+          <div class="hero-media">
+            <img src="assets/textures/encabezado.jpg" alt="" fetchpriority="high">
+          </div>
+
+          <!-- Barra superior: Digital / cotizador rápido / Física -->
+          <div class="hero-top">
+            <a href="#servicios" class="pill pill--buy anim" style="--a:1" data-svc-go="digital" data-magnetic>
+              <svg class="ico ico--accent"><use href="#i-arrow-ul"/></svg><span>Digital</span>
+            </a>
+
+            <form class="filter-bar anim" style="--a:2" aria-label="Cotizador rápido">
+              <div class="filter" data-filter="service">
+                <button type="button" class="filter__btn" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="filter__label"><svg class="ico"><use href="#i-sparkle"/></svg>Servicio</span>
+                  <span class="filter__value">Diseño gráfico</span>
+                  <svg class="ico filter__chev"><use href="#i-chevron"/></svg>
+                </button>
+                <!-- [html-validate-disable-next prefer-native-element -- menú propio accesible (teclado + ARIA) para el diseño] -->
+                <ul class="filter__menu" role="listbox">
+                  <li role="option" aria-selected="true">Diseño gráfico</li>
+                  <li role="option">Branding</li>
+                  <li role="option">Contenido para redes</li>
+                  <li role="option">Fotografía</li>
+                  <li role="option">Impresión</li>
+                  <li role="option">Avisos</li>
+                  <li role="option">Vinilos y polarizados</li>
+                  <li role="option">Papelería comercial</li>
+                  <li role="option">Souvenirs</li>
+                  <li role="option">Prendas personalizadas</li>
+                </ul>
+              </div>
+              <div class="filter" data-filter="type">
+                <button type="button" class="filter__btn" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="filter__label"><svg class="ico"><use href="#i-layers"/></svg>Formato</span>
+                  <span class="filter__value">Digital</span>
+                  <svg class="ico filter__chev"><use href="#i-chevron"/></svg>
+                </button>
+                <!-- [html-validate-disable-next prefer-native-element -- menú propio accesible (teclado + ARIA) para el diseño] -->
+                <ul class="filter__menu" role="listbox">
+                  <li role="option" aria-selected="true">Digital</li>
+                  <li role="option">Impreso</li>
+                  <li role="option">Personalizado</li>
+                </ul>
+              </div>
+              <div class="filter" data-filter="for">
+                <button type="button" class="filter__btn" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="filter__label"><svg class="ico"><use href="#i-tag"/></svg>Para</span>
+                  <span class="filter__value">Empresa</span>
+                  <svg class="ico filter__chev"><use href="#i-chevron"/></svg>
+                </button>
+                <!-- [html-validate-disable-next prefer-native-element -- menú propio accesible (teclado + ARIA) para el diseño] -->
+                <ul class="filter__menu" role="listbox">
+                  <li role="option" aria-selected="true">Empresa</li>
+                  <li role="option">Emprendimiento</li>
+                  <li role="option">Evento</li>
+                  <li role="option">Uso personal</li>
+                </ul>
+              </div>
+              <button type="submit" class="filter-bar__go" aria-label="Cotizar">
+                <svg class="ico"><use href="#i-arrow-r"/></svg>
+              </button>
+            </form>
+
+            <a href="#servicios" class="pill pill--rent anim" style="--a:3" data-svc-go="impresion" data-magnetic>
+              <span>Física</span><svg class="ico ico--accent"><use href="#i-arrow-ur"/></svg>
+            </a>
+          </div>
+
+          <!-- Rail lateral (en móvil se convierte en barra inferior) -->
+          <aside class="side-rail anim" style="--a:4" aria-label="Accesos rápidos">
+            <div class="rail-group">
+              <a href="#inicio" class="rail-btn is-active" aria-label="Inicio" data-tip="Inicio"><svg class="ico"><use href="#i-home"/></svg></a>
+              <a href="#servicios" class="rail-btn" aria-label="Servicios" data-tip="Servicios"><svg class="ico"><use href="#i-search"/></svg></a>
+              <a href="#galeria" class="rail-btn" aria-label="Galería" data-tip="Galería"><svg class="ico"><use href="#i-grid"/></svg></a>
+              <a href="#contacto" class="rail-btn" aria-label="Contacto" data-tip="Contacto"><svg class="ico"><use href="#i-chat"/></svg></a>
+            </div>
+            <div class="rail-group rail-group--account">
+              <a href="#contacto" class="rail-btn" aria-label="Cotizar" data-tip="Cotizar"><svg class="ico"><use href="#i-tag"/></svg></a>
+              <button type="button" class="rail-btn has-dot" aria-label="Avisos" data-tip="Avisos" data-toast="Escríbenos y cotiza tu proyecto con RevelArte"><svg class="ico"><use href="#i-bell"/></svg></button>
+            </div>
+            <div class="rail-group">
+              <button type="button" class="rail-btn" data-theme-set="dark" aria-label="Modo oscuro" data-tip="Oscuro"><svg class="ico"><use href="#i-moon"/></svg></button>
+              <button type="button" class="rail-btn" data-theme-set="light" aria-label="Modo claro" data-tip="Claro"><svg class="ico"><use href="#i-sun"/></svg></button>
+            </div>
+          </aside>
+
+          <h1 class="hero-title" data-depth="14" data-scroll="-0.18">
+            <span class="sr-only">RevelArte, Diseño y Publicidad</span>
+            <img class="hero-logo" src="assets/brand/logo-negativo.png" alt="" width="1200" height="646">
+          </h1>
+
+          <p class="hero-desc anim" style="--a:6" data-depth="8">
+            <strong>Revela tu marca.</strong>
+            Somos una empresa integral especializada en publicidad digital e impresa. Soluciones creativas y efectivas
+            para el progreso de empresas y emprendedores.
+          </p>
+
+          <!-- Tarjeta inferior izquierda -->
+          <article class="card-find anim" style="--a:7">
+            <h2>Tu socio estratégico</h2>
+            <p>Construimos relaciones sólidas y sostenibles entre las marcas y su audiencia, con herramientas integrales para tu crecimiento continuo.</p>
+            <div class="card-find__foot">
+              <div>
+                <strong class="big-num"><span data-count="11">0</span></strong>
+                <small>Servicios integrales</small>
+              </div>
+              <div class="avatar-stack">
+                <img src="assets/portafolio/boda-10.jpg" alt="" loading="lazy">
+                <img src="assets/portafolio/boda-11.jpg" alt="" loading="lazy">
+                <img src="assets/portafolio/boda-12.jpg" alt="" loading="lazy">
+              </div>
+              <a href="#servicios" class="round-btn" aria-label="Ver servicios" data-magnetic><svg class="ico"><use href="#i-arrow-ur"/></svg></a>
+            </div>
+          </article>
+
+          <!-- Insignia giratoria -->
+          <a href="#servicios" class="hero-badge anim" style="--a:8" aria-label="Ver servicios" data-depth="20">
+            <svg class="hero-badge__ring" viewBox="0 0 100 100" aria-hidden="true">
+              <defs><path id="ring" d="M50,50 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0"/></defs>
+              <text><textPath href="#ring">REVELARTE • DISEÑO Y PUBLICIDAD • </textPath></text>
+            </svg>
+            <span class="hero-badge__core"><img src="assets/brand/cruz.png" alt=""></span>
+          </a>
+
+          <!-- Tarjeta destacada (glass) -->
+          <article class="card-prop glass anim" style="--a:9" data-depth="-10">
+            <header class="card-prop__head">
+              <div>
+                <h3>Avisos Impactantes</h3>
+                <p class="muted-light"><svg class="ico ico--xs"><use href="#i-sign"/></svg>Para tiendas y empresas físicas</p>
+              </div>
+              <a href="#contacto" class="round-btn round-btn--light" aria-label="Cotizar avisos" data-service="Avisos Impactantes"><svg class="ico"><use href="#i-arrow-ur"/></svg></a>
+            </header>
+            <p class="card-prop__text">Soluciones visuales innovadoras que destacan tu nombre como marca o cualquier mensaje que quieras poner.</p>
+            <ul class="specs specs--light">
+              <li><svg class="ico ico--xs"><use href="#i-sparkle"/></svg>Cajas de luz</li>
+              <li><svg class="ico ico--xs"><use href="#i-layers"/></svg>Acrílicos</li>
+              <li><svg class="ico ico--xs"><use href="#i-sign"/></svg>Neón</li>
+              <li><svg class="ico ico--xs"><use href="#i-flag"/></svg>Pendones</li>
+            </ul>
+            <div class="card-prop__actions">
+              <button type="button" class="act-btn" data-like aria-pressed="false" aria-label="Me gusta">
+                <svg class="ico"><use href="#i-heart"/></svg><small>Me gusta</small>
+              </button>
+              <button type="button" class="act-btn" data-save aria-pressed="false" aria-label="Guardar">
+                <svg class="ico"><use href="#i-bookmark"/></svg><small>Guardar</small>
+              </button>
+              <button type="button" class="act-btn" data-share aria-label="Compartir">
+                <svg class="ico"><use href="#i-share"/></svg><small>Compartir</small>
+              </button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== Marquee ====== -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee__track">
+        <span>Diseño gráfico</span><i>✦</i><span>Branding</span><i>✦</i><span>Contenido para redes</span><i>✦</i><span>Fotografía</span><i>✦</i><span>Impresión</span><i>✦</i><span>Avisos</span><i>✦</i><span>Vinilos</span><i>✦</i><span>Papelería</span><i>✦</i><span>Souvenirs</span><i>✦</i><span>Prendas personalizadas</span><i>✦</i>
+        <span>Diseño gráfico</span><i>✦</i><span>Branding</span><i>✦</i><span>Contenido para redes</span><i>✦</i><span>Fotografía</span><i>✦</i><span>Impresión</span><i>✦</i><span>Avisos</span><i>✦</i><span>Vinilos</span><i>✦</i><span>Papelería</span><i>✦</i><span>Souvenirs</span><i>✦</i><span>Prendas personalizadas</span><i>✦</i>
+      </div>
+    </div>
+
+    <!-- ====== NOSOTROS / MISIÓN / VISIÓN ====== -->
+    <section class="section" id="nosotros">
+      <div class="container">
+        <div class="about">
+          <div class="about__head" data-reveal>
+            <span class="eyebrow">Nosotros</span>
+            <h2 class="h2">¿Quiénes <em>somos?</em></h2>
+            <figure class="about__visual">
+              <img src="assets/brand/logo-cuero.jpg" alt="Logo de RevelArte sobre cuero negro" loading="lazy">
+            </figure>
+          </div>
+          <p class="about__text" data-reveal style="--d:1">
+            Revelarte es una empresa integral especializada en publicidad digital e impresa. Nuestro equipo está
+            comprometido en catalizar el progreso de empresas y emprendedores mediante soluciones creativas y efectivas.
+            Somos socios estratégicos enfocados en construir relaciones sólidas y sostenibles entre las marcas y su audiencia.
+            Desde estrategias innovadoras digitales hasta publicidad impresa en diversos formatos, ofrecemos herramientas
+            integrales para el crecimiento continuo de nuestros clientes.
+          </p>
+        </div>
+
+        <div class="mv">
+          <article class="service-card mv-card" data-tilt data-reveal style="--d:1">
+            <span class="mv-card__num" aria-hidden="true">01</span>
+            <span class="service-card__icon"><svg class="ico"><use href="#i-flag"/></svg></span>
+            <h3>Misión</h3>
+            <p>
+              En Revelarte, nos destacamos como una empresa que fusiona de manera integral la publicidad digital y física,
+              abarcando todas las áreas del campo publicitario. Nos dedicamos a catalizar el progreso de empresas y
+              emprendedores, proporcionando soluciones únicas y efectivas que superan las expectativas convencionales.
+              Como socios estratégicos, nos esforzamos por construir relaciones sólidas, ofreciendo herramientas innovadoras
+              que impulsan el crecimiento sostenible de nuestros clientes y redefiniendo los estándares de excelencia en la publicidad.
+            </p>
+          </article>
+          <article class="service-card mv-card mv-card--accent" data-tilt data-reveal style="--d:2">
+            <span class="mv-card__num" aria-hidden="true">02</span>
+            <span class="service-card__icon"><svg class="ico"><use href="#i-eye"/></svg></span>
+            <h3>Visión</h3>
+            <p>
+              Posicionarnos como la vanguardia en el mundo de la publicidad, siendo reconocidos como una empresa integral
+              que abarca todos los aspectos de la publicidad digital y física. Buscamos liderar la transformación publicitaria,
+              ofreciendo soluciones innovadoras y creativas que trasciendan los límites convencionales y generen un impacto
+              significativo en la audiencia.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== SERVICIOS ====== -->
+    <section class="section" id="servicios">
+      <div class="container">
+        <div class="section-head">
+          <div data-reveal>
+            <span class="eyebrow">Servicios</span>
+            <h2 class="h2">Lo que hacemos <em>por tu marca</em></h2>
+            <p class="lead">Publicidad digital y física: diseño, impresión, avisos, personalizados y mucho más.</p>
+          </div>
+          <div class="section-head__tools" data-reveal style="--d:2">
+            <div class="chips" role="tablist" aria-label="Filtrar servicios">
+              <button type="button" class="chip is-active" role="tab" aria-selected="true" data-svc="all">Todos</button>
+              <button type="button" class="chip" role="tab" aria-selected="false" data-svc="digital">Diseño y digital</button>
+              <button type="button" class="chip" role="tab" aria-selected="false" data-svc="impresion">Impresión y avisos</button>
+              <button type="button" class="chip" role="tab" aria-selected="false" data-svc="personalizados">Personalizados</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="services">
+          <article class="service-card" data-cat="digital" data-tilt data-reveal style="--d:1">
+            <span class="mv-card__num" aria-hidden="true">01</span>
+            <span class="service-card__icon"><svg class="ico"><use href="#i-award"/></svg></span>
+            <h3>Branding</h3>
+            <p>Desarrollamos una identidad corporativa sólida con manuales que garantizan coherencia y reconocimiento.</p>
+            <ul class="svc-tags"><li>Identidad corporativa</li><li>Manual de marca</li></ul>
+            <a href="#contacto" class="link-arrow" data-service="Branding">Cotizar <svg class="ico"><use href="#i-arrow-ur"/></svg></a>
+          </article>
+
+          <article class="service-card" data-cat="digital" data-tilt data-reveal style="--d:2">
+            <span class="mv-card__num" aria-hidden="true">02</span>
+            <span class="service-card__icon"><svg class="ico"><use href="#i-pen-tool"/></svg></span>
+            <h3>Diseño Gráfico Integral</h3>
+            <p>Hacemos logos, flyers publicitarios, ofrecemos servicios de diseño gráfico que destacan tu identidad visual en distintos formatos.</p>
+            <ul class="svc-tags"><li>Logos</li><li>Flyers</li><li>Identidad visual</li></ul>
+            <a href="#contacto" class="link-arrow" data-service="Diseño Gráfico Integral">Cotizar <svg class="ico"><use href="#i-arrow-ur"/></svg></a>
+          </article>
+
+          <article class="service-card" data-cat="digital" data-tilt data-reveal style="--d:3">
+            <span class="mv-card__num" aria-hidden="true">03</span>
+            <span class="service-card__icon"><svg class="ico"><use href="#i-video"/></svg></span>
+            <h3>Creación y Edición de Contenido para Redes</h3>
+            <p>Potenciamos tu presencia online con contenido creativo y atractivo para redes sociales.</p>
+            <ul class="svc-tags"><li>Redes sociales</li><li>Edición</li><li>Contenido</li></ul>
+            <a href="#contacto" class="link-arrow" data-service="Creación y Edición de Contenido para Redes">Cotizar <svg class="ico"><use href="#i-arrow-ur"/></svg></a>
+          </article>
+
+          <article class="service-card" data-cat="digital" data-tilt data-reveal style="--d:1">
+            <span class="mv-card__num" aria-hidden="true">04</span>
+            <span class="service-card__icon"><svg class="ico"><use href="#i-camera"/></svg></span>
+            <h3>Fotografía Profesional</h3>
+            <p>Capturamos momentos excepcionales con servicios que van desde fotografía de producto, eventos, para mascotas y hasta books profesionales en interior y al aire libre.</p>
+            <ul class="svc-tags"><li>Producto</li><li>Eventos</li><li>Mascotas</li><li>Books</li></ul>
+            <a href="#contacto" class="link-arrow" data-service="Fotografía Profesional">Cotizar <svg class="ico"><use href="#i-arrow-ur"/></svg></a>
+          </article>
+
+          <article class="service-card" data-cat="impresion" data-tilt data-reveal style="--d:2">
+            <span class="mv-card__num" aria-hidden="true">05</span>
+            <span class="service-card__icon"><svg class="ico"><use href="#i-sign"/></svg></span>
+            <h3>Avisos Impactantes</h3>
+            <p>Para tiendas y empresas físicas manejamos cajas de luz, acrílicos, bastidor, caja de luz en acrílico, neón, combinados, rompe tráficos y pendones, ofrecemos soluciones visuales innovadoras que destacan tu nombre como marca o cualquier mensaje que quieras poner.</p>
+            <ul class="svc-tags"><li>Cajas de luz</li><li>Acrílicos</li><li>Neón</li><li>Pendones</li></ul>
+            <a href="#contacto" class="link-arrow" data-service="Avisos Impactantes">Cotizar <svg class="ico"><use href="#i-arrow-ur"/></svg></a>
+          </article>
+
+          <article class="service-card" data-cat="impresion" data-tilt data-reveal style="--d:3">
+            <span class="mv-card__num" aria-hidden="true">06</span>
+            <span class="service-card__icon"><svg class="ico"><use href="#i-layers"/></svg></span>
+            <h3>Vinilos Decorativos, Películas y Polarizados</h3>
+            <p>Transformamos espacios con vinilos decorativos, plotter de corte y frosted brindando privacidad con polarizados para ventanas, también aseguramos tus espacios con películas de seguridad.</p>
+            <ul class="svc-tags"><li>Vinilos</li><li>Plotter de corte</li><li>Frosted</li><li>Polarizados</li></ul>
+            <a href="#contacto" class="link-arrow" data-service="Vinilos Decorativos, Películas y Polarizados">Cotizar <svg class="ico"><use href="#i-arrow-ur"/></svg></a>
+          </article>
+
+          <article class="service-card" data-cat="impresion" data-tilt data-reveal style="--d:1">
+            <span class="mv-card__num" aria-hidden="true">07</span>
+            <span class="service-card__icon"><svg class="ico"><use href="#i-printer"/></svg></span>
+            <h3>Impresión en Diversos Formatos</h3>
+            <p>Desde grandes formatos de impresión en banner hasta tarjetas, carnets y muchos más... ¡garantizamos calidad!</p>
+            <ul class="svc-tags"><li>Banner</li><li>Tarjetas</li><li>Carnets</li></ul>
+            <a href="#contacto" class="link-arrow" data-service="Impresión en Diversos Formatos">Cotizar <svg class="ico"><use href="#i-arrow-ur"/></svg></a>
+          </article>
+
+          <article class="service-card" data-cat="impresion" data-tilt data-reveal style="--d:2">
+            <span class="mv-card__num" aria-hidden="true">08</span>
+            <span class="service-card__icon"><svg class="ico"><use href="#i-notebook"/></svg></span>
+            <h3>Artículos de Papelería Comercial</h3>
+            <p>Hacemos cuadernos, menús, stickers, etiquetas, calendarios, recetarios, sellos y más para una imagen profesional y consistente.</p>
+            <ul class="svc-tags"><li>Cuadernos</li><li>Menús</li><li>Stickers</li><li>Sellos</li></ul>
+            <a href="#contacto" class="link-arrow" data-service="Artículos de Papelería Comercial">Cotizar <svg class="ico"><use href="#i-arrow-ur"/></svg></a>
+          </article>
+
+          <article class="service-card" data-cat="personalizados" data-tilt data-reveal style="--d:3">
+            <span class="mv-card__num" aria-hidden="true">09</span>
+            <span class="service-card__icon"><svg class="ico"><use href="#i-gift"/></svg></span>
+            <h3>Insumos y Souvenirs Corporativos Personalizados</h3>
+            <p>Trabajamos con llaveros, botilitos, libretas, esferos, pocillos, tulas y más, para fortalecer tu imagen de marca.</p>
+            <ul class="svc-tags"><li>Llaveros</li><li>Pocillos</li><li>Libretas</li><li>Tulas</li></ul>
+            <a href="#contacto" class="link-arrow" data-service="Insumos y Souvenirs Corporativos Personalizados">Cotizar <svg class="ico"><use href="#i-arrow-ur"/></svg></a>
+          </article>
+
+          <article class="service-card" data-cat="personalizados" data-tilt data-reveal style="--d:1">
+            <span class="mv-card__num" aria-hidden="true">10</span>
+            <span class="service-card__icon"><svg class="ico"><use href="#i-shirt"/></svg></span>
+            <h3>Personalización de Prendas</h3>
+            <p>Buzos, camisetas, camisas, gorras, etc, diseñados a medida para reflejar tu estilo único o la marca de tu empresa o negocio. Manejamos Serigrafía, Dtf, vinilo, sublimación y bordado.</p>
+            <ul class="svc-tags"><li>Serigrafía</li><li>DTF</li><li>Sublimación</li><li>Bordado</li></ul>
+            <a href="#contacto" class="link-arrow" data-service="Personalización de Prendas">Cotizar <svg class="ico"><use href="#i-arrow-ur"/></svg></a>
+          </article>
+
+          <article class="service-card service-card--feature" data-cat="personalizados" data-reveal="zoom" style="--d:1">
+            <span class="mv-card__num" aria-hidden="true">11</span>
+            <div class="feature__head">
+              <span class="service-card__icon"><svg class="ico"><use href="#i-bag"/></svg></span>
+              <span class="eyebrow eyebrow--light">Nuestra tienda</span>
+              <h3>Tienda de Ropa Cristiana</h3>
+            </div>
+            <div class="feature__body">
+              <p>Elevamos tu estilo con prendas que reflejan tu fe. Desde camisetas hasta gorras, nuestra colección exclusiva fusiona la moda con el mensaje espiritual.</p>
+              <p>Descubre una manera única de expresar tu fe a través de la moda en nuestra tienda especializada.</p>
+              <p>Importante destacar que, además de ser una empresa con servicios de publicidad física y digital, nos enorgullece presentar nuestra propia tienda virtual de prendas cristianas.</p>
+              <a href="#contacto" class="btn btn--light" data-service="Tienda de Ropa Cristiana" data-magnetic><span>Quiero saber más</span><svg class="ico"><use href="#i-arrow-ur"/></svg></a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== PRODUCTOS (carrusel) ====== -->
+    <section class="section" id="productos">
+      <div class="container">
+        <div class="section-head">
+          <div data-reveal>
+            <span class="eyebrow">Destacados</span>
+            <h2 class="h2">Productos que <em>hablan por tu marca</em></h2>
+            <p class="lead">Algunos de los productos que diseñamos, imprimimos y personalizamos. Desliza, arrastra o usa las flechas.</p>
+          </div>
+          <div class="section-head__tools" data-reveal style="--d:2">
+            <div class="chips" role="tablist" aria-label="Filtrar productos">
+              <button type="button" class="chip is-active" role="tab" aria-selected="true" data-type="all">Todos</button>
+              <button type="button" class="chip" role="tab" aria-selected="false" data-type="digital">Digital</button>
+              <button type="button" class="chip" role="tab" aria-selected="false" data-type="impresion">Impresión</button>
+              <button type="button" class="chip" role="tab" aria-selected="false" data-type="personalizados">Personalizados</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="carousel" data-carousel data-autoplay="5000" data-reveal style="--d:3">
+          <div class="carousel__track" id="prop-track"><!-- Se llena desde js/main.js (lista PRODUCTS) --></div>
+          <div class="carousel__ui">
+            <div class="carousel__dots" role="group" aria-label="Paginación"></div>
+            <div class="carousel__arrows">
+              <button type="button" class="round-btn round-btn--outline" data-prev aria-label="Anterior"><svg class="ico"><use href="#i-arrow-l"/></svg></button>
+              <button type="button" class="round-btn" data-next aria-label="Siguiente"><svg class="ico"><use href="#i-arrow-r"/></svg></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== CIFRAS (parallax) ====== -->
+    <section class="section section--tight">
+      <div class="container">
+        <div class="stats-panel" data-reveal="zoom">
+          <div class="stats-panel__bg">
+            <img src="assets/textures/metal-rojo.jpg" alt="" data-parallax="0.18" loading="lazy">
+          </div>
+          <div class="stats-panel__content">
+            <div class="stats-panel__copy">
+              <span class="eyebrow eyebrow--light">Empresa integral</span>
+              <h2 class="h2 h2--light">Publicidad digital<br>y física en un solo lugar</h2>
+              <a href="#servicios" class="btn btn--light" data-magnetic><span>Ver todos los servicios</span><svg class="ico"><use href="#i-arrow-ur"/></svg></a>
+            </div>
+            <div class="stats-grid">
+              <div class="stat glass" data-reveal style="--d:1"><strong><span data-count="11">0</span></strong><small>Servicios integrales</small></div>
+              <div class="stat glass" data-reveal style="--d:2"><strong><span data-count="8">0</span></strong><small>Tipos de avisos para tu negocio</small></div>
+              <div class="stat glass" data-reveal style="--d:3"><strong><span data-count="5">0</span></strong><small>Técnicas para personalizar prendas</small></div>
+              <div class="stat glass" data-reveal style="--d:4"><strong><span data-count="4">0</span></strong><small>Estilos de fotografía profesional</small></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== GALERÍA (scroll horizontal fijado) ====== -->
+    <section class="hscroll" id="galeria">
+      <div class="hscroll__sticky">
+        <div class="container hscroll__head">
+          <div>
+            <span class="eyebrow">Portafolio · Fotografía</span>
+            <h2 class="h2">Momentos que <em>guardamos para siempre</em></h2>
+            <p class="lead">Nos complace compartir nuestra experiencia a través de estas fotografías que guardan un pedacito de cada momento especial para quienes han creído en nuestro trabajo.</p>
+          </div>
+          <div class="hscroll__progress" aria-hidden="true"><span></span></div>
+        </div>
+        <div class="hscroll__viewport">
+          <div class="hscroll__track">
+            <figure class="g-item"><img src="assets/portafolio/boda-01.jpg" alt="Pareja frente a una puerta de madera" loading="lazy"><figcaption><span>01</span>Retrato de pareja</figcaption></figure>
+            <figure class="g-item g-item--tall"><img src="assets/portafolio/boda-02.jpg" alt="Novia con velo de encaje" loading="lazy"><figcaption><span>02</span>La novia</figcaption></figure>
+            <figure class="g-item"><img src="assets/portafolio/boda-03.jpg" alt="Pareja abrazada bajo el velo" loading="lazy"><figcaption><span>03</span>Bajo el velo</figcaption></figure>
+            <figure class="g-item g-item--tall"><img src="assets/portafolio/boda-04.jpg" alt="Beso de los novios en el jardín" loading="lazy"><figcaption><span>04</span>El beso</figcaption></figure>
+            <figure class="g-item"><img src="assets/portafolio/boda-05.jpg" alt="Novios tomándose una selfie" loading="lazy"><figcaption><span>05</span>Momentos espontáneos</figcaption></figure>
+            <figure class="g-item g-item--tall"><img src="assets/portafolio/boda-06.jpg" alt="Novios en exteriores" loading="lazy"><figcaption><span>06</span>Sesión en exteriores</figcaption></figure>
+            <figure class="g-item"><img src="assets/portafolio/boda-07.jpg" alt="Novios en blanco y negro" loading="lazy"><figcaption><span>07</span>Blanco y negro</figcaption></figure>
+            <figure class="g-item g-item--tall"><img src="assets/portafolio/boda-08.jpg" alt="Novios mostrando los anillos" loading="lazy"><figcaption><span>08</span>Los anillos</figcaption></figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== PROCESO (carrusel) ====== -->
+    <section class="section" id="proceso">
+      <div class="container">
+        <div class="section-head">
+          <div data-reveal>
+            <span class="eyebrow">Proceso</span>
+            <h2 class="h2">Así revelamos <em>tu marca</em></h2>
+          </div>
+        </div>
+
+        <div class="carousel carousel--quotes" data-carousel data-autoplay="6500" data-reveal style="--d:2">
+          <div class="carousel__track">
+            <article class="quote-card">
+              <span class="step-icon"><svg class="ico"><use href="#i-chat"/></svg></span>
+              <p>Conocemos tu marca, tu audiencia y lo que necesitas comunicar, ya sea en digital o en físico.</p>
+              <footer><span class="step-badge">01</span><span><strong>Escuchamos</strong><small>Paso uno</small></span></footer>
+            </article>
+            <article class="quote-card">
+              <span class="step-icon"><svg class="ico"><use href="#i-pen-tool"/></svg></span>
+              <p>Creamos propuestas visuales con soluciones creativas y efectivas que destacan tu identidad.</p>
+              <footer><span class="step-badge">02</span><span><strong>Diseñamos</strong><small>Paso dos</small></span></footer>
+            </article>
+            <article class="quote-card">
+              <span class="step-icon"><svg class="ico"><use href="#i-printer"/></svg></span>
+              <p>Imprimimos, estampamos, instalamos o publicamos tu proyecto en el formato que necesites.</p>
+              <footer><span class="step-badge">03</span><span><strong>Producimos</strong><small>Paso tres</small></span></footer>
+            </article>
+            <article class="quote-card">
+              <span class="step-icon"><svg class="ico"><use href="#i-award"/></svg></span>
+              <p>Tu marca lista para conectar con su audiencia, con herramientas para su crecimiento continuo.</p>
+              <footer><span class="step-badge">04</span><span><strong>Entregamos</strong><small>Paso cuatro</small></span></footer>
+            </article>
+          </div>
+          <div class="carousel__ui">
+            <div class="carousel__dots" role="group" aria-label="Paginación"></div>
+            <div class="carousel__arrows">
+              <button type="button" class="round-btn round-btn--outline" data-prev aria-label="Anterior"><svg class="ico"><use href="#i-arrow-l"/></svg></button>
+              <button type="button" class="round-btn" data-next aria-label="Siguiente"><svg class="ico"><use href="#i-arrow-r"/></svg></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== CONTACTO ====== -->
+    <section class="section" id="contacto">
+      <div class="container">
+        <div class="contact-card" data-reveal="zoom">
+          <div class="contact-card__info">
+            <span class="eyebrow eyebrow--light">Contacto</span>
+            <h2 class="h2 h2--light">¿Listo para<br>revelar tu marca?</h2>
+            <p>Cuéntanos qué necesitas y te ayudamos a hacerlo realidad, en digital o en físico.</p>
+            <!-- PENDIENTE: reemplazar con los datos reales de contacto -->
+            <ul class="contact-list">
+              <li><span class="round-btn round-btn--glass"><svg class="ico"><use href="#i-mail"/></svg></span><a href="mailto:correo@revelarte.com">correo@revelarte.com</a></li>
+              <li><span class="round-btn round-btn--glass"><svg class="ico"><use href="#i-phone"/></svg></span><a href="tel:+000000000000">+00&nbsp;000&nbsp;000&nbsp;0000</a></li>
+              <li><span class="round-btn round-btn--glass"><svg class="ico"><use href="#i-pin"/></svg></span><span>Ciudad, país</span></li>
+            </ul>
+            <div class="socials">
+              <a href="#" aria-label="Instagram" data-magnetic><svg class="ico"><use href="#i-instagram"/></svg></a>
+              <a href="#" aria-label="Facebook" data-magnetic><svg class="ico"><use href="#i-facebook"/></svg></a>
+              <a href="#" aria-label="LinkedIn" data-magnetic><svg class="ico"><use href="#i-linkedin"/></svg></a>
+            </div>
+          </div>
+
+          <form class="contact-form" novalidate>
+            <fieldset class="seg">
+              <legend>Me interesa</legend>
+              <label><input type="radio" name="interes" value="digital" checked><span>Digital</span></label>
+              <label><input type="radio" name="interes" value="impresion"><span>Impresión</span></label>
+              <label><input type="radio" name="interes" value="personalizado"><span>Personalizado</span></label>
+            </fieldset>
+            <div class="field">
+              <input id="f-name" name="nombre" type="text" placeholder=" " required autocomplete="name">
+              <label for="f-name">Nombre o empresa</label>
+            </div>
+            <div class="field-row">
+              <div class="field">
+                <input id="f-mail" name="email" type="email" placeholder=" " required autocomplete="email">
+                <label for="f-mail">Correo electrónico</label>
+              </div>
+              <div class="field">
+                <input id="f-phone" name="telefono" type="tel" placeholder=" " autocomplete="tel">
+                <label for="f-phone">Teléfono / WhatsApp</label>
+              </div>
+            </div>
+            <div class="field">
+              <textarea id="f-msg" name="mensaje" rows="4" placeholder=" "></textarea>
+              <label for="f-msg">¿Qué necesitas para tu marca?</label>
+            </div>
+            <button type="submit" class="btn btn--primary btn--block" data-magnetic>
+              <span>Solicitar cotización</span><svg class="ico"><use href="#i-arrow-ur"/></svg>
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ====== Footer ====== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="site-footer__top">
+        <div class="site-footer__brand">
+          <a href="#inicio" class="brand" aria-label="RevelArte, ir al inicio"><img class="logo logo--neg" src="assets/brand/logo-negativo.png" alt="RevelArte Diseño y Publicidad" width="1200" height="646"><img class="logo logo--pos" src="assets/brand/logo-positivo.png" alt="RevelArte Diseño y Publicidad" width="1200" height="646"></a>
+          <p>Diseño y publicidad digital e impresa para empresas y emprendedores.</p>
+        </div>
+        <nav class="site-footer__cols" aria-label="Pie de página">
+          <div><h4>Explorar</h4><a href="#servicios">Servicios</a><a href="#productos">Productos</a><a href="#galeria">Galería</a></div>
+          <div><h4>Empresa</h4><a href="#nosotros">Nosotros</a><a href="#proceso">Proceso</a><a href="#contacto">Contacto</a></div>
+          <div><h4>Síguenos</h4><a href="#">Instagram</a><a href="#">Facebook</a><a href="#">LinkedIn</a></div>
+        </nav>
+      </div>
+      <div class="site-footer__word" aria-hidden="true"><img class="logo--neg" src="assets/brand/logo-negativo.png" alt="" loading="lazy"><img class="logo--pos" src="assets/brand/logo-positivo.png" alt="" loading="lazy"></div>
+      <div class="site-footer__bottom">
+        <small>© <span data-year></span> RevelArte · Diseño y Publicidad. Todos los derechos reservados.</small>
+        <a href="#inicio" class="link-arrow">Volver arriba <svg class="ico"><use href="#i-arrow-ur"/></svg></a>
+      </div>
+    </div>
+  </footer>
+
+  <div class="toast" role="status" aria-live="polite"></div>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+{
+  "extends": "stylelint-config-standard",
+  "ignoreFiles": [
+    "dist/**",
+    "node_modules/**"
+  ],
+  "rules": {
+    "selector-class-pattern": [
+      "^[a-z][a-z0-9]*(-[a-z0-9]+)*(__[a-z0-9]+(-[a-z0-9]+)*)?(--[a-z0-9]+(-[a-z0-9]+)*)?$",
+      {
+        "message": "Usa nombres BEM en minúsculas (bloque__elemento--modificador)"
+      }
+    ],
+    "declaration-block-single-line-max-declarations": null,
+    "color-function-notation": null,
+    "alpha-value-notation": null,
+    "media-feature-range-notation": null,
+    "value-keyword-case": [
+      "lower",
+      {
+        "camelCaseSvgKeywords": true
+      }
+    ],
+    "keyframes-name-pattern": null,
+    "no-descending-specificity": null,
+    "property-no-vendor-prefix": [
+      true,
+      {
+        "ignoreProperties": [
+          "/^-webkit-(backdrop-filter|mask-image|text-stroke|text-stroke-color)$/"
+        ]
+      }
+    ]
+  }
+}

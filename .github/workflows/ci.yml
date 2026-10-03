@@ -1,0 +1,56 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint-build:
+    name: Lint y build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar código
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Instalar dependencias
+        run: npm ci
+
+      - name: Auditoría de seguridad (dependencias de producción)
+        run: npm audit --omit=dev --audit-level=high
+
+      - name: Lint JS (ESLint)
+        run: npm run lint:js
+
+      - name: Lint CSS (Stylelint)
+        run: npm run lint:css
+
+      - name: Validar HTML (html-validate)
+        run: npm run lint:html
+
+      - name: Verificar archivos, íconos y anclas
+        run: npm run check:assets
+
+      - name: Build de producción
+        run: npm run build
+
+      - name: Publicar artefacto dist/
+        uses: actions/upload-artifact@v4
+        with:
+          name: revelarte-dist
+          path: dist/
+          retention-days: 14

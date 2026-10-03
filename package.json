@@ -1,0 +1,31 @@
+{
+  "name": "revelarte-landing",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Landing page estática de RevelArte · Diseño y Publicidad",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "node scripts/serve.mjs",
+    "lint": "node scripts/run.mjs lint:js lint:css lint:html check:assets",
+    "lint:js": "eslint .",
+    "lint:css": "stylelint \"css/**/*.css\"",
+    "lint:html": "html-validate index.html",
+    "check:assets": "node scripts/check-assets.mjs",
+    "build": "node scripts/build.mjs",
+    "preview": "node scripts/serve.mjs dist",
+    "ci": "node scripts/run.mjs lint build"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.5",
+    "esbuild": "^0.28.2",
+    "eslint": "^9.39.5",
+    "globals": "^17.13.0",
+    "html-minifier-terser": "^7.2.0",
+    "html-validate": "^9.7.1",
+    "stylelint": "^17.16.0",
+    "stylelint-config-standard": "^40.0.0"
+  }
+}

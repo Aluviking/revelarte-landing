@@ -1,0 +1,14 @@
+# Dependencias y build
+node_modules/
+dist/
+
+# Material fuente de la marca (pesado: PDF y originales en alta resolución).
+# Los archivos optimizados que usa la web están en assets/.
+Recursos/
+
+# Sistema / editor
+.DS_Store
+Thumbs.db
+*.log
+.vscode/
+.idea/
