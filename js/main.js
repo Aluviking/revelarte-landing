@@ -120,7 +120,7 @@
     const maxScroll = () => track.scrollWidth - track.clientWidth;
     const pages = () => Math.max(1, Math.round(maxScroll() / step()) + 1);
     const current = () => clamp(Math.round(track.scrollLeft / step()), 0, pages() - 1);
-    const goTo = (i) => track.scrollTo({ left: clamp(i, 0, pages() - 1) * step(), behavior: 'smooth' });
+    const goTo = (i) => track.scrollTo({ left: clamp(i, 0, pages() - 1) * step(), behavior: reduceMotion ? 'auto' : 'smooth' });
 
     const buildDots = () => {
       if (!dotsWrap) return;
@@ -201,7 +201,7 @@
     let rt;
     window.addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(buildDots, 150); });
     buildDots();
-    return { refresh: () => { track.scrollTo({ left: 0 }); buildDots(); } };
+    return { refresh: () => { track.scrollTo({ left: 0 }); buildDots(); }, goTo };
   };
 
   const carousels = new Map();
@@ -259,7 +259,8 @@
     } catch (err) { /* compartir cancelado */ }
   }));
 
-  /* ---------- Filtros desplegables del hero ---------- */
+  /* ---------- Barra del hero: Servicios · Productos · Procesos ---------- */
+  // Cada opción es un enlace a su sección; además aplica el filtro o abre el paso elegido.
   const filters = $$('.filter');
   const closeFilters = (except) => filters.forEach((f) => {
     if (f === except) return;
@@ -268,49 +269,37 @@
   });
   filters.forEach((f) => {
     const btn = $('.filter__btn', f);
-    const value = $('.filter__value', f);
-    const opts = $$('[role="option"]', f);
-    opts.forEach((o) => o.setAttribute('tabindex', '-1'));
+    const items = $$('[role="menuitem"]', f);
 
     const open = () => {
       closeFilters(f);
       f.classList.add('is-open');
       btn.setAttribute('aria-expanded', 'true');
-      (opts.find((o) => o.getAttribute('aria-selected') === 'true') || opts[0]).focus({ preventScroll: true });
+      items[0]?.focus({ preventScroll: true });
     };
     const close = () => { f.classList.remove('is-open'); btn.setAttribute('aria-expanded', 'false'); };
-    const choose = (o) => {
-      opts.forEach((x) => x.setAttribute('aria-selected', String(x === o)));
-      value.textContent = o.textContent;
-      close();
-      btn.focus({ preventScroll: true });
-    };
 
     btn.addEventListener('click', () => (f.classList.contains('is-open') ? close() : open()));
-    opts.forEach((o, i) => {
-      o.addEventListener('click', () => choose(o));
-      o.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowDown') { e.preventDefault(); opts[(i + 1) % opts.length].focus(); }
-        if (e.key === 'ArrowUp') { e.preventDefault(); opts[(i - 1 + opts.length) % opts.length].focus(); }
-        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); choose(o); }
+    btn.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowDown') { e.preventDefault(); open(); }
+    });
+    items.forEach((item, i) => {
+      item.addEventListener('click', () => {
+        close();
+        const { svc, type, step } = item.dataset;
+        if (svc) $(`.chip[data-svc="${svc}"]`)?.click();
+        if (type) $(`.chip[data-type="${type}"]`)?.click();
+        if (step) carousels.get($('#proceso [data-carousel]'))?.goTo(+step);
+      });
+      item.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowDown') { e.preventDefault(); items[(i + 1) % items.length].focus(); }
+        if (e.key === 'ArrowUp') { e.preventDefault(); items[(i - 1 + items.length) % items.length].focus(); }
         if (e.key === 'Escape') { close(); btn.focus(); }
       });
     });
   });
   document.addEventListener('click', (e) => { if (!e.target.closest('.filter')) closeFilters(); });
-
-  const filterBar = $('.filter-bar');
-  filterBar?.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const val = (k) => $(`[data-filter="${k}"] .filter__value`).textContent.trim();
-    const msg = $('#f-msg');
-    if (msg) msg.value = `Hola, me interesa cotizar: ${val('service')} (formato ${val('type').toLowerCase()}) para ${val('for').toLowerCase()}.`;
-    const seg = { Digital: 'digital', Impreso: 'impresion', Personalizado: 'personalizado' }[val('type')];
-    const radio = seg && $(`.seg input[value="${seg}"]`);
-    if (radio) radio.checked = true;
-    $('#contacto').scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth' });
-    toast(`Cotización de ${val('service').toLowerCase()} lista para enviar ✦`);
-  });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeFilters(); });
 
   // Pills "Digital" / "Física": llevan a servicios con el filtro aplicado
   $$('[data-svc-go]').forEach((a) => a.addEventListener('click', () => {

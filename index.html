@@ -62,6 +62,7 @@
     <symbol id="i-gift" viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M5 12v9h14v-9M12 8v13"/><path d="M12 8S10.5 3 7.5 4 9 8 12 8Zm0 0s1.5-5 4.5-4S15 8 12 8Z"/></symbol>
     <symbol id="i-shirt" viewBox="0 0 24 24"><path d="M8 3 3 6l2 5 2-1v11h10V10l2 1 2-5-5-3a4 4 0 0 1-8 0Z"/></symbol>
     <symbol id="i-bag" viewBox="0 0 24 24"><path d="M5 8h14l-1 13H6Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></symbol>
+    <symbol id="i-megaphone" viewBox="0 0 24 24"><path d="M3 10v4a1 1 0 0 0 1 1h3l8 4V5L7 9H4a1 1 0 0 0-1 1Z"/><path d="M19 9a4 4 0 0 1 0 6"/></symbol>
     <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></symbol>
     <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z"/></symbol>
     <symbol id="i-instagram" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></symbol>
@@ -87,10 +88,11 @@
 
       <nav class="main-nav" id="main-nav" aria-label="Principal">
         <a href="#nosotros">Nosotros</a>
-        <a href="#servicios">Servicios</a>
-        <a href="#productos">Productos</a>
+        <a href="#servicios" class="main-nav__mobile">Servicios</a>
+        <a href="#productos" class="main-nav__mobile">Productos</a>
+        <a href="#proceso" class="main-nav__mobile">Procesos</a>
         <a href="#galeria">Galería</a>
-        <a href="#proceso">Proceso</a>
+        <a href="#tienda">Tienda</a>
         <a href="#contacto" class="main-nav__cta-mobile">Contacto</a>
       </nav>
 
@@ -120,64 +122,56 @@
             <img src="assets/textures/encabezado.jpg" alt="" fetchpriority="high">
           </div>
 
-          <!-- Barra superior: Digital / cotizador rápido / Física -->
+          <!-- Barra superior: Digital / Servicios · Productos · Procesos / Física -->
           <div class="hero-top">
             <a href="#servicios" class="pill pill--buy anim" style="--a:1" data-svc-go="digital" data-magnetic>
               <svg class="ico ico--accent"><use href="#i-arrow-ul"/></svg><span>Digital</span>
             </a>
 
-            <form class="filter-bar anim" style="--a:2" aria-label="Cotizador rápido">
-              <div class="filter" data-filter="service">
-                <button type="button" class="filter__btn" aria-haspopup="listbox" aria-expanded="false">
-                  <span class="filter__label"><svg class="ico"><use href="#i-sparkle"/></svg>Servicio</span>
-                  <span class="filter__value">Diseño gráfico</span>
+            <nav class="filter-bar anim" style="--a:2" aria-label="Explorar">
+              <div class="filter" data-filter="servicios">
+                <button type="button" class="filter__btn" aria-haspopup="menu" aria-expanded="false">
+                  <span class="filter__label"><svg class="ico"><use href="#i-sparkle"/></svg>Explora</span>
+                  <span class="filter__value">Servicios</span>
                   <svg class="ico filter__chev"><use href="#i-chevron"/></svg>
                 </button>
-                <!-- [html-validate-disable-next prefer-native-element -- menú propio accesible (teclado + ARIA) para el diseño] -->
-                <ul class="filter__menu" role="listbox">
-                  <li role="option" aria-selected="true">Diseño gráfico</li>
-                  <li role="option">Branding</li>
-                  <li role="option">Contenido para redes</li>
-                  <li role="option">Fotografía</li>
-                  <li role="option">Impresión</li>
-                  <li role="option">Avisos</li>
-                  <li role="option">Vinilos y polarizados</li>
-                  <li role="option">Papelería comercial</li>
-                  <li role="option">Souvenirs</li>
-                  <li role="option">Prendas personalizadas</li>
+                <ul class="filter__menu" role="menu">
+                  <li role="none"><a role="menuitem" href="#servicios" data-svc="all">Ver todos</a></li>
+                  <li role="none"><a role="menuitem" href="#servicios" data-svc="digital">Diseño y digital</a></li>
+                  <li role="none"><a role="menuitem" href="#servicios" data-svc="impresion">Impresión y avisos</a></li>
+                  <li role="none"><a role="menuitem" href="#servicios" data-svc="personalizados">Personalizados</a></li>
                 </ul>
               </div>
-              <div class="filter" data-filter="type">
-                <button type="button" class="filter__btn" aria-haspopup="listbox" aria-expanded="false">
-                  <span class="filter__label"><svg class="ico"><use href="#i-layers"/></svg>Formato</span>
-                  <span class="filter__value">Digital</span>
+              <div class="filter" data-filter="productos">
+                <button type="button" class="filter__btn" aria-haspopup="menu" aria-expanded="false">
+                  <span class="filter__label"><svg class="ico"><use href="#i-layers"/></svg>Destacados</span>
+                  <span class="filter__value">Productos</span>
                   <svg class="ico filter__chev"><use href="#i-chevron"/></svg>
                 </button>
-                <!-- [html-validate-disable-next prefer-native-element -- menú propio accesible (teclado + ARIA) para el diseño] -->
-                <ul class="filter__menu" role="listbox">
-                  <li role="option" aria-selected="true">Digital</li>
-                  <li role="option">Impreso</li>
-                  <li role="option">Personalizado</li>
+                <ul class="filter__menu" role="menu">
+                  <li role="none"><a role="menuitem" href="#productos" data-type="all">Ver todos</a></li>
+                  <li role="none"><a role="menuitem" href="#productos" data-type="digital">Digital</a></li>
+                  <li role="none"><a role="menuitem" href="#productos" data-type="impresion">Impresión</a></li>
+                  <li role="none"><a role="menuitem" href="#productos" data-type="personalizados">Personalizados</a></li>
                 </ul>
               </div>
-              <div class="filter" data-filter="for">
-                <button type="button" class="filter__btn" aria-haspopup="listbox" aria-expanded="false">
-                  <span class="filter__label"><svg class="ico"><use href="#i-tag"/></svg>Para</span>
-                  <span class="filter__value">Empresa</span>
+              <div class="filter" data-filter="procesos">
+                <button type="button" class="filter__btn" aria-haspopup="menu" aria-expanded="false">
+                  <span class="filter__label"><svg class="ico"><use href="#i-flag"/></svg>Paso a paso</span>
+                  <span class="filter__value">Procesos</span>
                   <svg class="ico filter__chev"><use href="#i-chevron"/></svg>
                 </button>
-                <!-- [html-validate-disable-next prefer-native-element -- menú propio accesible (teclado + ARIA) para el diseño] -->
-                <ul class="filter__menu" role="listbox">
-                  <li role="option" aria-selected="true">Empresa</li>
-                  <li role="option">Emprendimiento</li>
-                  <li role="option">Evento</li>
-                  <li role="option">Uso personal</li>
+                <ul class="filter__menu" role="menu">
+                  <li role="none"><a role="menuitem" href="#proceso" data-step="0">1 · Escuchamos</a></li>
+                  <li role="none"><a role="menuitem" href="#proceso" data-step="1">2 · Diseñamos</a></li>
+                  <li role="none"><a role="menuitem" href="#proceso" data-step="2">3 · Producimos</a></li>
+                  <li role="none"><a role="menuitem" href="#proceso" data-step="3">4 · Entregamos</a></li>
                 </ul>
               </div>
-              <button type="submit" class="filter-bar__go" aria-label="Cotizar">
+              <a href="#contacto" class="filter-bar__go" aria-label="Cotiza ahora">
                 <svg class="ico"><use href="#i-arrow-r"/></svg>
-              </button>
-            </form>
+              </a>
+            </nav>
 
             <a href="#servicios" class="pill pill--rent anim" style="--a:3" data-svc-go="impresion" data-magnetic>
               <span>Física</span><svg class="ico ico--accent"><use href="#i-arrow-ur"/></svg>
@@ -209,14 +203,14 @@
 
           <p class="hero-desc anim" style="--a:6" data-depth="8">
             <strong>Revela tu marca.</strong>
-            Somos una empresa integral especializada en publicidad digital e impresa. Soluciones creativas y efectivas
-            para el progreso de empresas y emprendedores.
+            Somos una empresa integral de publicidad, diseño y fotografía. Creamos soluciones digitales, impresas
+            y personalizadas para llevar tu marca del concepto a la realidad.
           </p>
 
           <!-- Tarjeta inferior izquierda -->
           <article class="card-find anim" style="--a:7">
             <h2>Tu socio estratégico</h2>
-            <p>Construimos relaciones sólidas y sostenibles entre las marcas y su audiencia, con herramientas integrales para tu crecimiento continuo.</p>
+            <p>Escuchamos, proponemos y nos involucramos. Somos un equipo que entiende tus necesidades, aporta soluciones y te acompaña en cada etapa.</p>
             <div class="card-find__foot">
               <div>
                 <strong class="big-num"><span data-count="11">0</span></strong>
@@ -244,17 +238,18 @@
           <article class="card-prop glass anim" style="--a:9" data-depth="-10">
             <header class="card-prop__head">
               <div>
-                <h3>Avisos Impactantes</h3>
-                <p class="muted-light"><svg class="ico ico--xs"><use href="#i-sign"/></svg>Para tiendas y empresas físicas</p>
+                <h3>Creciendo Juntos</h3>
+                <p class="muted-light"><svg class="ico ico--xs"><use href="#i-sparkle"/></svg>Todo para tu marca, en un solo lugar</p>
               </div>
-              <a href="#contacto" class="round-btn round-btn--light" aria-label="Cotizar avisos" data-service="Avisos Impactantes"><svg class="ico"><use href="#i-arrow-ur"/></svg></a>
+              <a href="#servicios" class="round-btn round-btn--light" aria-label="Ver servicios"><svg class="ico"><use href="#i-arrow-ur"/></svg></a>
             </header>
-            <p class="card-prop__text">Soluciones visuales innovadoras que destacan tu nombre como marca o cualquier mensaje que quieras poner.</p>
+            <p class="card-prop__text">Encuentra todo lo que requieres para llevar tus ideas a otro nivel. Comparte nuestra página con un solo clic y recomiéndanos con quien nos pueda necesitar.</p>
             <ul class="specs specs--light">
-              <li><svg class="ico ico--xs"><use href="#i-sparkle"/></svg>Cajas de luz</li>
-              <li><svg class="ico ico--xs"><use href="#i-layers"/></svg>Acrílicos</li>
-              <li><svg class="ico ico--xs"><use href="#i-sign"/></svg>Neón</li>
-              <li><svg class="ico ico--xs"><use href="#i-flag"/></svg>Pendones</li>
+              <li><svg class="ico ico--xs"><use href="#i-megaphone"/></svg>Publicidad digital</li>
+              <li><svg class="ico ico--xs"><use href="#i-printer"/></svg>Impresión</li>
+              <li><svg class="ico ico--xs"><use href="#i-pen-tool"/></svg>Diseño</li>
+              <li><svg class="ico ico--xs"><use href="#i-camera"/></svg>Fotografía</li>
+              <li><svg class="ico ico--xs"><use href="#i-shirt"/></svg>Personalización</li>
             </ul>
             <div class="card-prop__actions">
               <button type="button" class="act-btn" data-like aria-pressed="false" aria-label="Me gusta">
@@ -438,7 +433,7 @@
             <a href="#contacto" class="link-arrow" data-service="Personalización de Prendas">Cotizar <svg class="ico"><use href="#i-arrow-ur"/></svg></a>
           </article>
 
-          <article class="service-card service-card--feature" data-cat="personalizados" data-reveal="zoom" style="--d:1">
+          <article class="service-card service-card--feature" id="tienda" data-cat="personalizados" data-reveal="zoom" style="--d:1">
             <span class="mv-card__num" aria-hidden="true">11</span>
             <div class="feature__head">
               <span class="service-card__icon"><svg class="ico"><use href="#i-bag"/></svg></span>

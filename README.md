@@ -81,7 +81,7 @@ RevelArte/
 
 | # | Sección | Ancla | Contenido |
 | --- | --- | --- | --- |
-| 1 | Hero | `#inicio` | Logo oficial sobre el fondo de encabezado, cotizador rápido, tarjetas destacadas |
+| 1 | Hero | `#inicio` | Logo oficial sobre el fondo de encabezado, barra **Servicios · Productos · Procesos**, tarjetas *Tu socio estratégico* y *Creciendo Juntos* |
 | 2 | Franja animada | — | Nombres de los servicios en movimiento continuo |
 | 3 | Nosotros | `#nosotros` | ¿Quiénes somos?, Misión y Visión (textos oficiales) |
 | 4 | Servicios | `#servicios` | Los 11 servicios con filtro por categoría y botón **Cotizar** |
@@ -115,7 +115,10 @@ Todo está en `js/main.js`, organizado por bloques comentados:
   teclado (← →) y autoplay que se pausa al pasar el mouse o al salir de pantalla.
 - **Galería horizontal fijada**: avanza de lado mientras se hace scroll vertical.
 - **Filtros**: por categoría en Servicios y en Productos, con animación de entrada.
-- **Cotizador rápido** (hero) y botones **Cotizar**: rellenan el mensaje del formulario y llevan a Contacto.
+- **Navegación en dos barras**: el header lleva a *Nosotros · Galería · Tienda* y la barra del hero a
+  *Servicios · Productos · Procesos*. Cada menú del hero despliega opciones que llevan a la sección con el
+  filtro aplicado (o al paso elegido del proceso). En celular, el menú reúne las 6 secciones.
+- **Botones Cotizar** de servicios y productos: rellenan el mensaje del formulario y llevan a Contacto.
 - **Microinteracciones**: tarjetas con inclinación 3D y brillo, botones magnéticos, efecto *ripple*,
   reveal al hacer scroll, contadores animados, menú móvil, toasts, barra de progreso de lectura.
 - **Tema claro/oscuro** con persistencia en `localStorage` (con manejo de errores si no está disponible).
@@ -137,8 +140,8 @@ Al añadir una imagen o un ícono nuevo, `npm run check:assets` confirma que la 
 - **ESLint** (`eslint.config.js`): reglas recomendadas + `no-var`, `prefer-const`, `eqeqeq`.
 - **Stylelint** (`.stylelintrc.json`): `stylelint-config-standard` con nombres de clase BEM.
   Se permiten solo los prefijos `-webkit-` necesarios para Safari (`backdrop-filter`, `mask-image`, `text-stroke`).
-- **html-validate** (`.htmlvalidate.json`): reglas recomendadas. Los menús del cotizador son
-  componentes accesibles propios (teclado + ARIA) y están marcados como excepción documentada.
+- **html-validate** (`.htmlvalidate.json`): reglas recomendadas. Los menús del hero usan
+  `role="menu"` con enlaces reales, navegables con teclado (↑ ↓ Esc).
 - **check-assets**: falla si falta un archivo, si un ícono no existe o sobra, o si un ancla no tiene destino.
 - **GitHub Actions** (`.github/workflows/ci.yml`): en cada *push* a `main` y en cada *pull request*
   instala dependencias, audita las dependencias de producción, corre todos los lint, genera el build
