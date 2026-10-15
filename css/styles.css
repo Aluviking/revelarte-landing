@@ -887,6 +887,12 @@ h1, h2, h3, h4, p { margin: 0; }
   padding-top: 20px; border-top: 1px solid var(--line); color: var(--muted);
 }
 
+.site-footer__credit {
+  margin-top: 18px; text-align: center; font-size: .78rem; letter-spacing: .06em; color: var(--muted);
+}
+
+.site-footer__credit strong { font-weight: 600; color: var(--text); }
+
 /* ---------- Toast ---------- */
 .toast {
   position: fixed; left: 50%; bottom: 28px; z-index: 150; max-width: calc(100% - 32px);
