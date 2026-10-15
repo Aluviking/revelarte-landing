@@ -58,11 +58,13 @@ RevelArte/
 ├── css/
 │   └── styles.css          # Sistema de diseño (tokens), componentes y responsive
 ├── js/
-│   └── main.js             # Interacciones (sin dependencias)
+│   ├── main.js             # Interacciones (sin dependencias)
+│   └── tienda.js           # Catálogo de "Nuestra Tienda" (temporada y productos)
 ├── assets/
 │   ├── brand/              # Logos oficiales, cruz, favicon y logo en cuero
 │   ├── textures/           # Fondo de encabezado y metales cepillados (negro, plata, rojo)
-│   └── portafolio/         # Fotografías reales del Book Matrimonios (optimizadas)
+│   ├── portafolio/         # Fotografías reales del Book Matrimonios (4 parejas, optimizadas)
+│   └── tienda/             # Fotos de los productos de la tienda
 ├── scripts/
 │   ├── build.mjs           # Build de producción (esbuild + html-minifier-terser)
 │   ├── check-assets.mjs    # Verificador de referencias
@@ -89,7 +91,7 @@ RevelArte/
 | 6 | Cifras | — | Datos derivados de los servicios, con contadores animados |
 | 7 | Galería | `#galeria` | Fotos reales del Book Matrimonios, con scroll horizontal fijado |
 | 8 | Proceso | `#proceso` | Escuchamos → Diseñamos → Producimos → Entregamos |
-| 9 | Contacto | `#contacto` | Datos de contacto y formulario de cotización |
+| 9 | Contacto | `#contacto` | WhatsApp, correo, Bogotá (Colombia), redes y formulario que envía por WhatsApp |
 
 ## Identidad visual
 
@@ -114,6 +116,12 @@ Todo está en `js/main.js`, organizado por bloques comentados:
 - **Carruseles** (productos y proceso): scroll-snap nativo, arrastre con mouse, flechas, puntos,
   teclado (← →) y autoplay que se pausa al pasar el mouse o al salir de pantalla.
 - **Galería horizontal fijada**: avanza de lado mientras se hace scroll vertical.
+- **Fotos que rotan solas** (`data-rotate`): cada recuadro de la galería y cada producto con varias fotos
+  las va mostrando con un fundido; se pausa al pasar el mouse o cuando no está en pantalla.
+- **Nuestra Tienda**: catálogo de la temporada generado desde `js/tienda.js`; cada producto abre WhatsApp
+  con un mensaje listo ("Hola, me interesa …").
+- **Formulario de contacto → WhatsApp**: arma el mensaje con nombre, interés, mensaje, correo y teléfono
+  y lo abre en WhatsApp (+57 315 713 8579), el canal que RevelArte responde más rápido.
 - **Filtros**: por categoría en Servicios y en Productos, con animación de entrada.
 - **Navegación en dos barras**: el header lleva a *Nosotros · Galería · Tienda* y la barra del hero a
   *Servicios · Productos · Procesos*. Cada menú del hero despliega opciones que llevan a la sección con el
@@ -128,10 +136,12 @@ Todo está en `js/main.js`, organizado por bloques comentados:
 | Quiero cambiar… | Dónde |
 | --- | --- |
 | Textos de cualquier sección | `index.html` (cada sección está marcada con un comentario `<!-- ====== NOMBRE ====== -->`) |
-| Productos del carrusel | `js/main.js` → constante `PRODUCTS` (nombre, categoría, servicio, características, imagen) |
+| Productos del carrusel | `js/main.js` → constante `PRODUCTS` (nombre, categoría, servicio, características y `imgs`: una o varias fotos) |
+| **Tienda (temporada y productos)** | `js/tienda.js` (instrucciones paso a paso dentro del archivo) y fotos en `assets/tienda/` |
+| Número de WhatsApp | `js/main.js` → constante `WHATSAPP`, y enlaces `wa.me` en `index.html` |
 | Colores, radios, sombras | `css/styles.css` → bloque **Tokens** |
-| Fotos de la galería | `assets/portafolio/` y la sección `#galeria` de `index.html` |
-| Datos de contacto y redes | Sección `#contacto` y footer de `index.html` (marcado como `PENDIENTE`) |
+| Fotos de la galería | `assets/portafolio/` y la sección `#galeria` de `index.html` (cada `<figure data-rotate>` acepta varias `<img>`) |
+| Datos de contacto y redes | Sección `#contacto` y footer de `index.html` |
 
 Al añadir una imagen o un ícono nuevo, `npm run check:assets` confirma que la ruta sea correcta.
 
@@ -176,10 +186,10 @@ También se puede descargar `dist/` desde el artefacto **revelarte-dist** de cad
 
 ## Pendientes
 
-- [ ] Datos de contacto reales (correo, teléfono/WhatsApp, ciudad) y enlaces a redes sociales.
-- [ ] Enlace a la tienda virtual de ropa cristiana (botón “Quiero saber más”).
-- [ ] Conectar el formulario a un servicio de envío (Formspree, Netlify Forms, EmailJS o WhatsApp).
-- [ ] Fotos reales de impresión, avisos, prendas y souvenirs para reemplazar las de banco del carrusel de productos.
+- [x] Datos de contacto reales, redes sociales y formulario conectado a WhatsApp.
+- [ ] Fotos de los productos de la temporada para `js/tienda.js` (por ahora muestra "Muy pronto").
+- [ ] Fotos reales de impresión, avisos, prendas, souvenirs y contenido para reemplazar las de banco del carrusel de productos.
+- [ ] Más fotos de bodas para la galería (cada recuadro admite varias).
 
 ---
 

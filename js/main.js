@@ -12,25 +12,38 @@
   const finePointer = matchMedia('(pointer: fine)').matches;
   const desktop = matchMedia('(min-width: 901px)');
 
+  /* ---------- Contacto principal ---------- */
+  const WHATSAPP = '573157138579';
+  const waLink = (text) => `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(text)}`;
+
   /* ---------- Productos destacados (edita aquí tu contenido) ---------- */
   // type: digital | impresion | personalizados   ·   service: nombre del servicio para "Cotizar"
+  // imgs: una o varias fotos; si hay varias, cambian solas dentro de la tarjeta.
   const PRODUCTS = [
     { name: 'Camisetas personalizadas', type: 'personalizados', tag: 'Prendas', service: 'Personalización de Prendas',
-      features: ['Serigrafía', 'DTF', 'Sublimación'], img: 'https://images.unsplash.com/photo-1576566588028-4147f3842f27?auto=format&fit=crop&w=900&q=75' },
+      features: ['Serigrafía', 'DTF', 'Sublimación'],
+      imgs: ['https://images.unsplash.com/photo-1576566588028-4147f3842f27?auto=format&fit=crop&w=900&q=75', 'https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?auto=format&fit=crop&w=900&q=75', 'https://images.unsplash.com/photo-1622445275463-afa2ab738c34?auto=format&fit=crop&w=900&q=75'] },
     { name: 'Logos e identidad visual', type: 'digital', tag: 'Diseño', service: 'Diseño Gráfico Integral',
-      features: ['Logos', 'Flyers', 'Manual de marca'], img: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=900&q=75' },
+      features: ['Logos', 'Flyers', 'Manual de marca'],
+      imgs: ['https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=900&q=75', 'https://images.unsplash.com/photo-1572044162444-ad60f128bdea?auto=format&fit=crop&w=900&q=75', 'https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&w=900&q=75'] },
     { name: 'Pocillos y souvenirs', type: 'personalizados', tag: 'Souvenirs', service: 'Insumos y Souvenirs Corporativos Personalizados',
-      features: ['Pocillos', 'Llaveros', 'Tulas'], img: 'https://images.unsplash.com/photo-1572119865084-43c285814d63?auto=format&fit=crop&w=900&q=75' },
+      features: ['Pocillos', 'Llaveros', 'Tulas'],
+      imgs: ['https://images.unsplash.com/photo-1572119865084-43c285814d63?auto=format&fit=crop&w=900&q=75', 'https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?auto=format&fit=crop&w=900&q=75'] },
     { name: 'Impresión en todo formato', type: 'impresion', tag: 'Impresión', service: 'Impresión en Diversos Formatos',
-      features: ['Banner', 'Tarjetas', 'Carnets'], img: 'https://images.unsplash.com/photo-1612815154858-60aa4c59eaa6?auto=format&fit=crop&w=900&q=75' },
-    { name: 'Contenido para redes', type: 'digital', tag: 'Redes', service: 'Creación y Edición de Contenido para Redes',
-      features: ['Creación', 'Edición', 'Redes sociales'], img: 'https://images.unsplash.com/photo-1586953208448-b95a79798f07?auto=format&fit=crop&w=900&q=75' },
+      features: ['Banner', 'Tarjetas', 'Carnets'],
+      imgs: ['https://images.unsplash.com/photo-1612815154858-60aa4c59eaa6?auto=format&fit=crop&w=900&q=75'] },
+    { name: 'Creación de contenido', type: 'digital', tag: 'Contenido', service: 'Creación y Edición de Contenido para Redes',
+      features: ['Fotografía', 'Grabación', 'Edición'],
+      imgs: ['https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=900&q=75', 'https://images.unsplash.com/photo-1609921212029-bb5a28e60960?auto=format&fit=crop&w=900&q=75', 'https://images.unsplash.com/photo-1452587925148-ce544e77e70d?auto=format&fit=crop&w=900&q=75'] },
     { name: 'Buzos y hoodies', type: 'personalizados', tag: 'Prendas', service: 'Personalización de Prendas',
-      features: ['Bordado', 'Vinilo', 'DTF'], img: 'https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=900&q=75' },
+      features: ['Bordado', 'Vinilo', 'DTF'],
+      imgs: ['https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=900&q=75'] },
     { name: 'Cuadernos y libretas', type: 'impresion', tag: 'Papelería', service: 'Artículos de Papelería Comercial',
-      features: ['Cuadernos', 'Recetarios', 'Calendarios'], img: 'https://images.unsplash.com/photo-1531346878377-a5be20888e57?auto=format&fit=crop&w=900&q=75' },
-    { name: 'Fotografía de matrimonios', type: 'digital', tag: 'Fotografía', service: 'Fotografía Profesional',
-      features: ['Matrimonios', 'Eventos', 'Books'], img: 'assets/portafolio/boda-09.jpg' }
+      features: ['Cuadernos', 'Recetarios', 'Calendarios'],
+      imgs: ['https://images.unsplash.com/photo-1531346878377-a5be20888e57?auto=format&fit=crop&w=900&q=75'] },
+    { name: 'Fotografía de bodas', type: 'digital', tag: 'Fotografía', service: 'Fotografía Profesional',
+      features: ['Bodas', 'Eventos', 'Books'],
+      imgs: ['assets/portafolio/boda-09.jpg', 'assets/portafolio/boda-13.jpg', 'assets/portafolio/boda-19.jpg'] }
   ];
 
   /* ---------- Utilidades ---------- */
@@ -83,8 +96,8 @@
   if (propTrack) {
     propTrack.innerHTML = PRODUCTS.map((p) => `
       <article class="prop-card" data-type="${p.type}">
-        <div class="prop-card__media">
-          <img src="${p.img}" alt="${p.name}" loading="lazy" draggable="false">
+        <div class="prop-card__media"${p.imgs.length > 1 ? ' data-rotate' : ''}>
+          ${p.imgs.map((src, i) => `<img src="${src}" alt="${p.name}" loading="lazy" draggable="false"${i === 0 ? ' class="is-active"' : ''}>`).join('')}
           <span class="prop-card__tag">${p.tag}</span>
           <button type="button" class="prop-card__like" aria-pressed="false" aria-label="Guardar ${p.name} en favoritos">
             <svg class="ico"><use href="#i-heart"/></svg>
@@ -100,6 +113,44 @@
         </div>
       </article>`).join('');
   }
+
+  /* ---------- Nuestra Tienda: catálogo de la temporada (datos en js/tienda.js) ---------- */
+  const shop = window.TIENDA || { temporada: '', productos: [] };
+  const seasonEl = $('[data-shop-season]');
+  const shopGrid = $('[data-shop-grid]');
+  if (seasonEl) seasonEl.textContent = shop.temporada || 'Nueva temporada';
+  $('[data-shop-cta]')?.setAttribute('href', waLink(`Hola RevelArte, quiero ver el catálogo de la ${shop.temporada || 'tienda'}.`));
+  if (shopGrid) {
+    const esc = (t) => String(t ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+    shopGrid.innerHTML = shop.productos.length
+      ? shop.productos.map((it) => `
+        <a class="shop__item" href="${waLink(`Hola RevelArte, me interesa ${it.nombre} de la ${shop.temporada}.`)}" target="_blank" rel="noopener">
+          <span class="shop__photo"><img src="${esc(it.foto)}" alt="${esc(it.nombre)}" loading="lazy"></span>
+          <span class="shop__name">${esc(it.nombre)}</span>
+          ${it.detalle ? `<small>${esc(it.detalle)}</small>` : ''}
+          <span class="shop__buy"><svg class="ico"><use href="#i-whatsapp"/></svg>Pedir</span>
+        </a>`).join('')
+      : Array.from({ length: 4 }, () => `
+        <span class="shop__item shop__item--soon"><span class="shop__photo"><svg class="ico"><use href="#i-bag"/></svg></span><span class="shop__name">Muy pronto</span></span>`).join('');
+  }
+
+  /* ---------- Fotos que rotan solas (productos y galería) ---------- */
+  const rotators = $$('[data-rotate]');
+  const rotIO = new IntersectionObserver((entries) => {
+    entries.forEach((en) => { en.target.dataset.visible = en.isIntersecting ? '1' : ''; });
+  }, { threshold: .2 });
+  rotators.forEach((box, n) => {
+    const imgs = $$('img', box);
+    if (imgs.length < 2) return;
+    rotIO.observe(box);
+    let i = 0;
+    setTimeout(() => setInterval(() => {
+      if (!box.dataset.visible || document.hidden || box.matches(':hover')) return;
+      imgs[i].classList.remove('is-active');
+      i = (i + 1) % imgs.length;
+      imgs[i].classList.add('is-active');
+    }, 3800), n * 450);
+  });
 
   /* ---------- Carrusel (scroll-snap + arrastre + autoplay) ---------- */
   const initCarousel = (el) => {
@@ -532,15 +583,29 @@
   form?.addEventListener('submit', (e) => {
     e.preventDefault();
     let ok = true;
-    $$('input[required]', form).forEach((input) => {
+    $$('input[required], input[type="email"]', form).forEach((input) => {
       const field = input.closest('.field');
-      const valid = input.value.trim() !== '' && (input.type !== 'email' || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value.trim()));
+      const v = input.value.trim();
+      const valid = input.type === 'email'
+        ? v === '' || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)
+        : v !== '';
       field.classList.toggle('is-invalid', !valid);
       if (!valid && ok) { input.focus(); ok = false; }
     });
     if (!ok) { toast('Revisa los campos marcados'); return; }
-    // TODO: conectar con tu servicio de formularios (Formspree, Netlify Forms, EmailJS…)
-    toast('¡Gracias! Te contactaremos muy pronto ✦');
+
+    // Se envía por WhatsApp, el canal que RevelArte responde más rápido
+    const data = new FormData(form);
+    const interes = $('.seg input:checked + span', form)?.textContent.trim();
+    const lines = [
+      `Hola RevelArte, soy ${data.get('nombre').trim()}.`,
+      interes && `Me interesa: ${interes}.`,
+      data.get('mensaje').trim(),
+      data.get('email').trim() && `Correo: ${data.get('email').trim()}`,
+      data.get('telefono').trim() && `Teléfono: ${data.get('telefono').trim()}`
+    ].filter(Boolean);
+    window.open(waLink(lines.join('\n')), '_blank', 'noopener');
+    toast('Abriendo WhatsApp… ✦');
     form.reset();
   });
   $$('.field input', form || document).forEach((i) =>

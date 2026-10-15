@@ -7,7 +7,9 @@ const read = (f) => readFileSync(resolve(root, f), 'utf8');
 
 const html = read('index.html');
 const css = read('css/styles.css');
-const js = read('js/main.js');
+// Se ignoran los comentarios (p. ej. la línea de ejemplo de js/tienda.js)
+const stripComments = (code) => code.replace(/\/\*[\s\S]*?\*\/|^\s*\/\/.*$/gm, '');
+const js = stripComments(read('js/main.js') + read('js/tienda.js'));
 const errors = [];
 
 // 1. Archivos locales (src/href en HTML, url() en CSS, rutas en JS)

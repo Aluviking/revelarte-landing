@@ -126,7 +126,7 @@ h1, h2, h3, h4, p { margin: 0; }
 }
 .btn:hover::before { transform: translateY(0); }
 .btn .ico { transition: transform .45s var(--ease); }
-.btn:hover .ico { transform: rotate(45deg); }
+.btn:hover .ico:last-child { transform: rotate(45deg); }
 .btn--primary { background: var(--primary); color: var(--primary-ink); box-shadow: 0 14px 30px -14px var(--primary); }
 .btn--primary::before { background: var(--brand-black); }
 [data-theme="dark"] .btn--primary::before { background: #fff; }
@@ -572,7 +572,7 @@ h1, h2, h3, h4, p { margin: 0; }
   position: relative; aspect-ratio: 4 / 3.2; overflow: hidden; border-radius: calc(var(--r-lg) - 8px);
   background: linear-gradient(135deg, #1c1c1c, #be1522);
 }
-.prop-card__media img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ease); }
+.prop-card__media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ease), opacity 1.2s var(--ease); }
 .prop-card:hover .prop-card__media img { transform: scale(1.08); }
 
 .prop-card__tag {
@@ -612,7 +612,7 @@ h1, h2, h3, h4, p { margin: 0; }
   transition: transform .6s var(--ease), background-color .5s;
 }
 .quote-card:hover { transform: translateY(-6px); }
-.quote-card p { font-size: clamp(1.1rem, 2vw, 1.4rem); line-height: 1.45; letter-spacing: -.01em; flex: 1; }
+.quote-card p { font-size: clamp(1rem, 1.6vw, 1.18rem); line-height: 1.6; flex: 1; }
 .quote-card footer { display: flex; align-items: center; gap: 12px; }
 .quote-card footer span { display: grid; }
 
@@ -716,9 +716,9 @@ h1, h2, h3, h4, p { margin: 0; }
     var(--brand-red);
 }
 .service-card--feature .service-card__icon { background: #fff; color: var(--brand-red); margin-bottom: 20px; }
-.service-card--feature h3 { font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 500; letter-spacing: -.03em; padding: 0; }
+.service-card--feature h3 { font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 500; letter-spacing: -.03em; padding: 0; white-space: nowrap; }
 .service-card--feature .eyebrow { display: flex; width: max-content; }
-.service-card--feature p { color: rgb(255, 255, 255, .85); }
+.service-card--feature p { color: rgb(255, 255, 255, .85); font-size: .93rem; line-height: 1.6; }
 .service-card--feature .feature__body { display: grid; gap: 16px; justify-items: start; }
 .service-card--feature .btn { margin-top: 8px; }
 .service-card--feature .mv-card__num { -webkit-text-stroke-color: rgb(255, 255, 255, .25); }
@@ -728,7 +728,7 @@ h1, h2, h3, h4, p { margin: 0; }
    ========================================================= */
 .about {
   display: grid; grid-template-columns: 1fr 1.7fr; gap: clamp(24px, 5vw, 80px);
-  align-items: start; margin-bottom: clamp(32px, 5vw, 56px);
+  align-items: center; margin-bottom: clamp(32px, 5vw, 56px);
 }
 .about__text { font-size: clamp(1.1rem, 1.8vw, 1.45rem); line-height: 1.55; letter-spacing: -.01em; }
 .mv { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; perspective: 1000px; }
@@ -778,7 +778,7 @@ h1, h2, h3, h4, p { margin: 0; }
   background: linear-gradient(135deg, #1c1c1c, #be1522);
 }
 .g-item--tall { aspect-ratio: 4 / 5; }
-.g-item img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.15); transition: transform 1.2s var(--ease); }
+.g-item img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transform: scale(1.15); transition: transform 1.2s var(--ease), opacity 1.2s var(--ease); }
 .g-item:hover img { transform: scale(1.04); }
 
 .g-item figcaption {
@@ -1094,3 +1094,52 @@ h1, h2, h3, h4, p { margin: 0; }
 @media (prefers-reduced-motion: reduce) {
   .js .hero-title .hero-logo { opacity: 1; scale: none; filter: drop-shadow(0 14px 40px rgb(0, 0, 0, .55)); }
 }
+
+/* =========================================================
+   Fotos que rotan solas (productos y galería)
+   ========================================================= */
+[data-rotate] img { opacity: 0; }
+[data-rotate] img.is-active { opacity: 1; }
+
+/* =========================================================
+   Nuestra Tienda: catálogo de temporada
+   ========================================================= */
+.shop {
+  display: grid; gap: 14px; align-content: start; padding: 18px; border-radius: 24px;
+  background: rgb(0, 0, 0, .35); border: 1px solid rgb(255, 255, 255, .12);
+}
+.shop__head small { font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; opacity: .7; }
+.shop__head h4 { margin-top: 2px; font-size: 1.35rem; font-weight: 600; }
+.shop__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+
+.shop__item {
+  display: grid; gap: 4px; align-content: start; padding: 8px; border-radius: 16px; color: #fff;
+  background: rgb(255, 255, 255, .08); transition: transform .4s var(--ease), background-color .3s;
+}
+a.shop__item:hover { transform: translateY(-4px); background: rgb(255, 255, 255, .16); }
+
+.shop__photo {
+  display: grid; place-items: center; aspect-ratio: 1; overflow: hidden; border-radius: 12px;
+  background: rgb(255, 255, 255, .06);
+}
+.shop__photo img { width: 100%; height: 100%; object-fit: cover; }
+.shop__photo .ico { width: 30px; height: 30px; opacity: .45; }
+.shop__name { font-size: .85rem; font-weight: 500; }
+.shop__item small { font-size: .75rem; opacity: .7; }
+.shop__buy { display: inline-flex; align-items: center; gap: 4px; font-size: .75rem; opacity: .85; }
+.shop__buy .ico { width: 14px; height: 14px; }
+.shop__item--soon .shop__name { opacity: .6; }
+.shop__cta { justify-self: start; }
+
+@media (min-width: 1025px) {
+  .service-card--feature {
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); column-gap: 32px;
+    grid-template-areas: "head shop" "body shop";
+  }
+  .service-card--feature .feature__head { grid-area: head; }
+  .service-card--feature .feature__body { grid-area: body; }
+  .service-card--feature .shop { grid-area: shop; align-self: start; }
+}
+
+/* Bandera en contacto */
+.flag { width: 22px; height: auto; border-radius: 3px; }

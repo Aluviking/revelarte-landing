@@ -17,13 +17,16 @@ mkdirSync(join(out, 'js'), { recursive: true });
 
 const css = (await transform(read('css/styles.css'), { loader: 'css', minify: true, target })).code;
 const js = (await transform(read('js/main.js'), { loader: 'js', minify: true, target })).code;
+const shop = (await transform(read('js/tienda.js'), { loader: 'js', minify: true, target })).code;
 writeFileSync(join(out, 'css/styles.css'), css);
 writeFileSync(join(out, 'js/main.js'), js);
+writeFileSync(join(out, 'js/tienda.js'), shop);
 
 const html = await minify(
   read('index.html')
     .replace('href="css/styles.css"', `href="css/styles.css?v=${hash(css)}"`)
-    .replace('src="js/main.js"', `src="js/main.js?v=${hash(js)}"`),
+    .replace('src="js/main.js"', `src="js/main.js?v=${hash(js)}"`)
+    .replace('src="js/tienda.js"', `src="js/tienda.js?v=${hash(shop)}"`),
   {
     collapseWhitespace: true,
     conservativeCollapse: true,
