@@ -822,7 +822,9 @@ h1, h2, h3, h4, p { margin: 0; }
 .contact-list li { display: flex; align-items: center; gap: 14px; }
 .contact-list a { transition: opacity .3s; }
 .contact-list a:hover { opacity: .7; }
-.socials { display: flex; gap: 10px; margin-top: auto; }
+.follow { margin-top: auto; }
+.follow__label { margin-bottom: 12px; font-size: .95rem; font-weight: 500; opacity: .9; }
+.socials { display: flex; gap: 10px; }
 
 .socials a {
   display: grid; place-items: center; width: 46px; height: 46px; border-radius: 50%;
