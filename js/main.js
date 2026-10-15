@@ -19,6 +19,8 @@
   /* ---------- Productos destacados (edita aquí tu contenido) ---------- */
   // type: digital | impresion | personalizados   ·   service: nombre del servicio para "Cotizar"
   // imgs: una o varias fotos; si hay varias, cambian solas dentro de la tarjeta.
+  //       La foto 1 corresponde a la etiqueta 1 de features, la 2 a la 2, etc.:
+  //       al cambiar la foto se resalta su etiqueta (ej. Serigrafía → DTF → Sublimación).
   const PRODUCTS = [
     { name: 'Camisetas personalizadas', type: 'personalizados', tag: 'Prendas', service: 'Personalización de Prendas',
       features: ['Serigrafía', 'DTF', 'Sublimación'],
@@ -107,7 +109,9 @@
           <div class="prop-card__row"><h3>${p.name}</h3></div>
           <p class="prop-card__loc"><svg class="ico ico--xs"><use href="#i-sparkle"/></svg>${p.service}</p>
           <div class="prop-card__foot">
-            <ul class="svc-tags">${p.features.map((f) => `<li>${f}</li>`).join('')}</ul>
+            <ul class="svc-tags">${p.features.map((f, i) => i < p.imgs.length && p.imgs.length > 1
+              ? `<li><button type="button" data-photo="${i}"${i === 0 ? ' class="is-active"' : ''}>${f}</button></li>`
+              : `<li>${f}</li>`).join('')}</ul>
             <a href="#contacto" class="round-btn" data-service="${p.service}" aria-label="Cotizar ${p.name}"><svg class="ico"><use href="#i-arrow-ur"/></svg></a>
           </div>
         </div>
@@ -143,12 +147,20 @@
     const imgs = $$('img', box);
     if (imgs.length < 2) return;
     rotIO.observe(box);
+    // En productos, cada foto tiene su etiqueta (técnica) que se resalta
+    const tags = $$('[data-photo]', box.closest('.prop-card') || box);
     let i = 0;
-    setTimeout(() => setInterval(() => {
-      if (!box.dataset.visible || document.hidden || box.matches(':hover')) return;
+    const show = (k) => {
       imgs[i].classList.remove('is-active');
-      i = (i + 1) % imgs.length;
+      tags[i]?.classList.remove('is-active');
+      i = k;
       imgs[i].classList.add('is-active');
+      tags[i]?.classList.add('is-active');
+    };
+    tags.forEach((t) => t.addEventListener('click', () => show(+t.dataset.photo)));
+    setTimeout(() => setInterval(() => {
+      if (!box.dataset.visible || document.hidden || box.closest('.prop-card, .g-item').matches(':hover')) return;
+      show((i + 1) % imgs.length);
     }, 3800), n * 450);
   });
 
@@ -312,7 +324,7 @@
 
   /* ---------- Barra del hero: Servicios · Productos · Procesos ---------- */
   // Cada opción es un enlace a su sección; además aplica el filtro o abre el paso elegido.
-  const filters = $$('.filter');
+  const filters = $$('.filter').filter((f) => $('.filter__menu', f)); // Galería y Tienda son enlaces directos
   const closeFilters = (except) => filters.forEach((f) => {
     if (f === except) return;
     f.classList.remove('is-open');
@@ -339,6 +351,11 @@
         close();
         const { svc, type, step } = item.dataset;
         if (svc) $(`.chip[data-svc="${svc}"]`)?.click();
+        const target = item.getAttribute('href').startsWith('#svc-') && $(item.getAttribute('href'));
+        if (target) {
+          target.classList.add('is-in', 'is-highlight');
+          setTimeout(() => target.classList.remove('is-highlight'), 2200);
+        }
         if (type) $(`.chip[data-type="${type}"]`)?.click();
         if (step) carousels.get($('#proceso [data-carousel]'))?.goTo(+step);
       });

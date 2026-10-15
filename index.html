@@ -89,8 +89,8 @@
         <a href="#servicios" class="main-nav__mobile">Servicios</a>
         <a href="#productos" class="main-nav__mobile">Productos</a>
         <a href="#proceso" class="main-nav__mobile">Procesos</a>
-        <a href="#galeria">Galería</a>
-        <a href="#tienda">Tienda</a>
+        <a href="#galeria" class="main-nav__mobile">Galería</a>
+        <a href="#tienda" class="main-nav__mobile">Tienda</a>
         <a href="#contacto" class="main-nav__cta-mobile">Contacto</a>
       </nav>
 
@@ -135,9 +135,17 @@
                 </button>
                 <ul class="filter__menu" role="menu">
                   <li role="none"><a role="menuitem" href="#servicios" data-svc="all">Ver todos</a></li>
-                  <li role="none"><a role="menuitem" href="#servicios" data-svc="digital">Diseño y digital</a></li>
-                  <li role="none"><a role="menuitem" href="#servicios" data-svc="impresion">Impresión y avisos</a></li>
-                  <li role="none"><a role="menuitem" href="#servicios" data-svc="personalizados">Personalizados</a></li>
+                  <li role="none"><a role="menuitem" href="#svc-branding" data-svc="all">Branding</a></li>
+                  <li role="none"><a role="menuitem" href="#svc-diseno-grafico-integral" data-svc="all">Diseño Gráfico Integral</a></li>
+                  <li role="none"><a role="menuitem" href="#svc-creacion-y-edicion-de-contenido-para-redes" data-svc="all">Creación y Edición de Contenido para Redes</a></li>
+                  <li role="none"><a role="menuitem" href="#svc-fotografia-profesional" data-svc="all">Fotografía Profesional</a></li>
+                  <li role="none"><a role="menuitem" href="#svc-avisos-impactantes" data-svc="all">Avisos Impactantes</a></li>
+                  <li role="none"><a role="menuitem" href="#svc-vinilos-decorativos-peliculas-y-polarizados" data-svc="all">Vinilos Decorativos, Películas y Polarizados</a></li>
+                  <li role="none"><a role="menuitem" href="#svc-impresion-en-diversos-formatos" data-svc="all">Impresión en Diversos Formatos</a></li>
+                  <li role="none"><a role="menuitem" href="#svc-articulos-de-papeleria-comercial" data-svc="all">Artículos de Papelería Comercial</a></li>
+                  <li role="none"><a role="menuitem" href="#svc-insumos-y-souvenirs-corporativos-personalizados" data-svc="all">Insumos y Souvenirs Corporativos Personalizados</a></li>
+                  <li role="none"><a role="menuitem" href="#svc-personalizacion-de-prendas" data-svc="all">Personalización de Prendas</a></li>
+                  <li role="none"><a role="menuitem" href="#tienda" data-svc="all">Nuestra Tienda</a></li>
                 </ul>
               </div>
               <div class="filter" data-filter="productos">
@@ -165,6 +173,20 @@
                   <li role="none"><a role="menuitem" href="#proceso" data-step="2">3 · Producimos</a></li>
                   <li role="none"><a role="menuitem" href="#proceso" data-step="3">4 · Entregamos</a></li>
                 </ul>
+              </div>
+              <div class="filter filter--link" data-filter="galeria">
+                <a href="#galeria" class="filter__btn">
+                  <span class="filter__label"><svg class="ico"><use href="#i-grid"/></svg>Portafolio</span>
+                  <span class="filter__value">Galería</span>
+                  <svg class="ico filter__chev"><use href="#i-arrow-ur"/></svg>
+                </a>
+              </div>
+              <div class="filter filter--link" data-filter="tienda">
+                <a href="#tienda" class="filter__btn">
+                  <span class="filter__label"><svg class="ico"><use href="#i-bag"/></svg>Temporada</span>
+                  <span class="filter__value">Tienda</span>
+                  <svg class="ico filter__chev"><use href="#i-arrow-ur"/></svg>
+                </a>
               </div>
               <a href="#contacto" class="filter-bar__go" aria-label="Cotiza ahora">
                 <svg class="ico"><use href="#i-arrow-r"/></svg>
@@ -341,7 +363,7 @@
         </div>
 
         <div class="services">
-          <article class="service-card" data-cat="digital" data-tilt data-reveal style="--d:1">
+          <article class="service-card" id="svc-branding" data-cat="digital" data-tilt data-reveal style="--d:1">
             <span class="mv-card__num" aria-hidden="true">01</span>
             <span class="service-card__icon"><svg class="ico"><use href="#i-award"/></svg></span>
             <h3>Branding</h3>
@@ -350,7 +372,7 @@
             <a href="#contacto" class="link-arrow" data-service="Branding">Cotizar <svg class="ico"><use href="#i-arrow-ur"/></svg></a>
           </article>
 
-          <article class="service-card" data-cat="digital" data-tilt data-reveal style="--d:2">
+          <article class="service-card" id="svc-diseno-grafico-integral" data-cat="digital" data-tilt data-reveal style="--d:2">
             <span class="mv-card__num" aria-hidden="true">02</span>
             <span class="service-card__icon"><svg class="ico"><use href="#i-pen-tool"/></svg></span>
             <h3>Diseño Gráfico Integral</h3>
@@ -359,7 +381,7 @@
             <a href="#contacto" class="link-arrow" data-service="Diseño Gráfico Integral">Cotizar <svg class="ico"><use href="#i-arrow-ur"/></svg></a>
           </article>
 
-          <article class="service-card" data-cat="digital" data-tilt data-reveal style="--d:3">
+          <article class="service-card" id="svc-creacion-y-edicion-de-contenido-para-redes" data-cat="digital" data-tilt data-reveal style="--d:3">
             <span class="mv-card__num" aria-hidden="true">03</span>
             <span class="service-card__icon"><svg class="ico"><use href="#i-video"/></svg></span>
             <h3>Creación y Edición de Contenido para Redes</h3>
@@ -368,7 +390,7 @@
             <a href="#contacto" class="link-arrow" data-service="Creación y Edición de Contenido para Redes">Cotizar <svg class="ico"><use href="#i-arrow-ur"/></svg></a>
           </article>
 
-          <article class="service-card" data-cat="digital" data-tilt data-reveal style="--d:1">
+          <article class="service-card" id="svc-fotografia-profesional" data-cat="digital" data-tilt data-reveal style="--d:1">
             <span class="mv-card__num" aria-hidden="true">04</span>
             <span class="service-card__icon"><svg class="ico"><use href="#i-camera"/></svg></span>
             <h3>Fotografía Profesional</h3>
@@ -377,7 +399,7 @@
             <a href="#contacto" class="link-arrow" data-service="Fotografía Profesional">Cotizar <svg class="ico"><use href="#i-arrow-ur"/></svg></a>
           </article>
 
-          <article class="service-card" data-cat="impresion" data-tilt data-reveal style="--d:2">
+          <article class="service-card" id="svc-avisos-impactantes" data-cat="impresion" data-tilt data-reveal style="--d:2">
             <span class="mv-card__num" aria-hidden="true">05</span>
             <span class="service-card__icon"><svg class="ico"><use href="#i-sign"/></svg></span>
             <h3>Avisos Impactantes</h3>
@@ -386,7 +408,7 @@
             <a href="#contacto" class="link-arrow" data-service="Avisos Impactantes">Cotizar <svg class="ico"><use href="#i-arrow-ur"/></svg></a>
           </article>
 
-          <article class="service-card" data-cat="impresion" data-tilt data-reveal style="--d:3">
+          <article class="service-card" id="svc-vinilos-decorativos-peliculas-y-polarizados" data-cat="impresion" data-tilt data-reveal style="--d:3">
             <span class="mv-card__num" aria-hidden="true">06</span>
             <span class="service-card__icon"><svg class="ico"><use href="#i-layers"/></svg></span>
             <h3>Vinilos Decorativos, Películas y Polarizados</h3>
@@ -395,7 +417,7 @@
             <a href="#contacto" class="link-arrow" data-service="Vinilos Decorativos, Películas y Polarizados">Cotizar <svg class="ico"><use href="#i-arrow-ur"/></svg></a>
           </article>
 
-          <article class="service-card" data-cat="impresion" data-tilt data-reveal style="--d:1">
+          <article class="service-card" id="svc-impresion-en-diversos-formatos" data-cat="impresion" data-tilt data-reveal style="--d:1">
             <span class="mv-card__num" aria-hidden="true">07</span>
             <span class="service-card__icon"><svg class="ico"><use href="#i-printer"/></svg></span>
             <h3>Impresión en Diversos Formatos</h3>
@@ -404,7 +426,7 @@
             <a href="#contacto" class="link-arrow" data-service="Impresión en Diversos Formatos">Cotizar <svg class="ico"><use href="#i-arrow-ur"/></svg></a>
           </article>
 
-          <article class="service-card" data-cat="impresion" data-tilt data-reveal style="--d:2">
+          <article class="service-card" id="svc-articulos-de-papeleria-comercial" data-cat="impresion" data-tilt data-reveal style="--d:2">
             <span class="mv-card__num" aria-hidden="true">08</span>
             <span class="service-card__icon"><svg class="ico"><use href="#i-notebook"/></svg></span>
             <h3>Artículos de Papelería Comercial</h3>
@@ -413,7 +435,7 @@
             <a href="#contacto" class="link-arrow" data-service="Artículos de Papelería Comercial">Cotizar <svg class="ico"><use href="#i-arrow-ur"/></svg></a>
           </article>
 
-          <article class="service-card" data-cat="personalizados" data-tilt data-reveal style="--d:3">
+          <article class="service-card" id="svc-insumos-y-souvenirs-corporativos-personalizados" data-cat="personalizados" data-tilt data-reveal style="--d:3">
             <span class="mv-card__num" aria-hidden="true">09</span>
             <span class="service-card__icon"><svg class="ico"><use href="#i-gift"/></svg></span>
             <h3>Insumos y Souvenirs Corporativos Personalizados</h3>
@@ -422,12 +444,12 @@
             <a href="#contacto" class="link-arrow" data-service="Insumos y Souvenirs Corporativos Personalizados">Cotizar <svg class="ico"><use href="#i-arrow-ur"/></svg></a>
           </article>
 
-          <article class="service-card" data-cat="personalizados" data-tilt data-reveal style="--d:1">
+          <article class="service-card" id="svc-personalizacion-de-prendas" data-cat="personalizados" data-tilt data-reveal style="--d:1">
             <span class="mv-card__num" aria-hidden="true">10</span>
             <span class="service-card__icon"><svg class="ico"><use href="#i-shirt"/></svg></span>
             <h3>Personalización de Prendas</h3>
             <p>Buzos, camisetas, camisas, gorras, etc, diseñados a medida para reflejar tu estilo único o la marca de tu empresa o negocio. Manejamos Serigrafía, Dtf, vinilo, sublimación y bordado.</p>
-            <ul class="svc-tags"><li>Serigrafía</li><li>DTF</li><li>Sublimación</li><li>Bordado</li></ul>
+            <ul class="svc-tags"><li>Serigrafía</li><li>DTF</li><li>Vinilo textil</li><li>Sublimación</li><li>Bordado</li></ul>
             <a href="#contacto" class="link-arrow" data-service="Personalización de Prendas">Cotizar <svg class="ico"><use href="#i-arrow-ur"/></svg></a>
           </article>
 

@@ -118,13 +118,15 @@ Todo está en `js/main.js`, organizado por bloques comentados:
 - **Galería horizontal fijada**: avanza de lado mientras se hace scroll vertical.
 - **Fotos que rotan solas** (`data-rotate`): cada recuadro de la galería y cada producto con varias fotos
   las va mostrando con un fundido; se pausa al pasar el mouse o cuando no está en pantalla.
+  En productos, cada foto está ligada a una etiqueta (foto 1 ↔ etiqueta 1…): la etiqueta se resalta al
+  cambiar la foto y, al tocar una etiqueta, se muestra su foto.
 - **Nuestra Tienda**: catálogo de la temporada generado desde `js/tienda.js`; cada producto abre WhatsApp
   con un mensaje listo ("Hola, me interesa …").
 - **Formulario de contacto → WhatsApp**: arma el mensaje con nombre, interés, mensaje, correo y teléfono
   y lo abre en WhatsApp (+57 315 713 8579), el canal que RevelArte responde más rápido.
 - **Filtros**: por categoría en Servicios y en Productos, con animación de entrada.
-- **Navegación en dos barras**: el header lleva a *Nosotros · Galería · Tienda* y la barra del hero a
-  *Servicios · Productos · Procesos*. Cada menú del hero despliega opciones que llevan a la sección con el
+- **Navegación en dos barras**: el header lleva a *Nosotros* y la barra del hero a
+  *Servicios · Productos · Procesos · Galería · Tienda* (el menú Servicios lista los 11 servicios uno por uno). Cada menú del hero despliega opciones que llevan a la sección con el
   filtro aplicado (o al paso elegido del proceso). En celular, el menú reúne las 6 secciones.
 - **Botones Cotizar** de servicios y productos: rellenan el mensaje del formulario y llevan a Contacto.
 - **Microinteracciones**: tarjetas con inclinación 3D y brillo, botones magnéticos, efecto *ripple*,
