@@ -1172,7 +1172,8 @@ a.shop__item:hover { transform: translateY(-4px); background: rgb(255, 255, 255,
 /* Menú Servicios con los 11 servicios */
 .filter[data-filter="servicios"] .filter__menu { width: min(300px, 78vw); max-height: min(62vh, 460px); overflow-y: auto; }
 .filter[data-filter="servicios"] .filter__menu a { white-space: normal; line-height: 1.3; }
-.service-card.is-highlight { box-shadow: 0 0 0 2px var(--accent), var(--shadow); }
+.service-card.is-highlight, .prop-card.is-highlight { box-shadow: 0 0 0 2px var(--accent), var(--shadow); }
+.filter[data-filter="productos"] .filter__menu { max-height: min(62vh, 460px); overflow-y: auto; }
 
 /* Etiquetas de producto ligadas a su foto */
 .svc-tags button {

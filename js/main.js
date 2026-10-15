@@ -93,6 +93,11 @@
   $$('.main-nav a').forEach((a) => a.addEventListener('click', () => setNav(false)));
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setNav(false); });
 
+  /* ---------- Menú "Productos" de la barra del inicio: uno por uno ---------- */
+  const productMenu = $('[data-product-menu]');
+  productMenu?.insertAdjacentHTML('beforeend', PRODUCTS.map((p, i) =>
+    `<li role="none"><a role="menuitem" href="#productos" data-type="all" data-product="${i}">${p.name}</a></li>`).join(''));
+
   /* ---------- Render de productos ---------- */
   const propTrack = $('#prop-track');
   if (propTrack) {
@@ -264,7 +269,7 @@
     let rt;
     window.addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(buildDots, 150); });
     buildDots();
-    return { refresh: () => { track.scrollTo({ left: 0 }); buildDots(); }, goTo };
+    return { refresh: () => { track.scrollTo({ left: 0 }); buildDots(); }, goTo, hold: () => { lastInteract = Date.now(); } };
   };
 
   const carousels = new Map();
@@ -357,6 +362,18 @@
           setTimeout(() => target.classList.remove('is-highlight'), 2200);
         }
         if (type) $(`.chip[data-type="${type}"]`)?.click();
+        if (item.dataset.product) {
+          // Lleva el carrusel hasta ese producto y lo resalta
+          const k = +item.dataset.product;
+          const card = $$('#prop-track .prop-card')[k];
+          setTimeout(() => {
+            const track = $('#prop-track');
+            carousels.get(track.closest('[data-carousel]'))?.hold();
+            track.scrollTo({ left: card.offsetLeft - track.offsetLeft, behavior: reduceMotion ? 'auto' : 'smooth' });
+            card.classList.add('is-highlight');
+            setTimeout(() => card.classList.remove('is-highlight'), 2400);
+          }, 60);
+        }
         if (step) carousels.get($('#proceso [data-carousel]'))?.goTo(+step);
       });
       item.addEventListener('keydown', (e) => {
